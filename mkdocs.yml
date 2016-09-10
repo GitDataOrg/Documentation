@@ -1,8 +1,8 @@
 site_name: ZeroNet
 site_url: https://github.com/HelloZeroNet/ZeroNet
-site_description: Decentralized websites using Bitcoin crypto and the BitTorrent network
+site_description: Публикация децентрализованных веб-сайтов с использованием технологий криптографии Bitcoin и пирринговой сети BitTorrent
 
-repo_url: https://github.com/HelloZeroNet/ZeroNet
+repo_url: https://github.com/GitDataOrg/Documentation
 
 extra_css: [docs.css]
 extra_javascript: [docs.js]
