@@ -12,11 +12,14 @@
     {% endif %}
     {% if current_page %}<li>{{ current_page.title }}</li>{% endif %}
     <li class="wy-breadcrumbs-aside">
+      {% if home_url != '' %}
+        <a href="{{ home_url }}" class="icon icon-home" target="_blank"> Сайт GitData</a>
+      {% endif %}
       {% if repo_url %}
         {% if repo_name == 'GitHub' %}
-          <a href="{{ repo_url }}" class="icon icon-github"> Открыть в GitHub</a>
+          <a href="{{ repo_url }}" class="icon icon-github" target="_blank"> Открыть в GitHub</a>
         {% elif repo_name == 'Bitbucket' %}
-          <a href="{{ repo_url }}" class="icon icon-bitbucket"> Открыть в BitBucket</a>
+          <a href="{{ repo_url }}" class="icon icon-bitbucket" target="_blank"> Открыть в BitBucket</a>
         {% endif %}
       {% endif %}
     </li>
