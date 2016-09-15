@@ -12,9 +12,7 @@
     {% endif %}
     {% if current_page %}<li>{{ current_page.title }}</li>{% endif %}
     <li class="wy-breadcrumbs-aside">
-      {% if home_url != '' %}
-        <a href="{{ home_url }}" class="icon icon-home" target="_blank"> Сайт GitData</a>
-      {% endif %}
+      <a href="http://www.gitdata.net" class="icon icon-home" target="_blank"> Сайт GitData</a>
       {% if repo_url %}
         {% if repo_name == 'GitHub' %}
           <a href="{{ repo_url }}" class="icon icon-github" target="_blank"> Открыть в GitHub</a>
