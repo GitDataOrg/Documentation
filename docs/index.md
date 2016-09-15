@@ -1,23 +1,23 @@
-# What is ZeroNet?
+# Что такое ZeroNet?
 
-ZeroNet uses Bitcoin cryptography and BitTorrent technology to build a **decentralized censorship-resistant network**.
+ZeroNet использует криптографию Bitcoin и технологии публикации данных BitTorrent для построения **децентрализованной сети, стойкой к цензуре**.
 
-Users can publish static or dynamic websites into ZeroNet and visitors can choose to also serve the website. Websites will remain online even if it is being served by only one peer.
+Пользователи сети могут опубликовывать в сети ZeroNet веб-сайты, содержащие статичный либо динамичный контент, на которые могут подписываться и распространять другие пользователи. Веб-сайты всегда будут в онлайне, даже если у него всего один подписчик.
 
-When a site is updated by its owner, all nodes serving that site (previous visitors) will receive only the incremental updates done to the site content.
+Когда контент сайта обновляется владельцем, все его подписчики (прошлые посетители) получают только обновление данные.
 
-ZeroNet comes with a built-in SQL database. This makes content-heavy site development easy. The DB is also synced with hosting nodes with incremental updates.
+Браузер ZeroNet распространяется со встроенной базой данных. Такое решение позволяет упростить разработку сайтов, содержащих большой объем контента. База данных синхронизируется с публикующими узлами с помощью инкрементного обновления данных.
 
 
-# Why?
+# Зачем это?
 
-* We believe in open, free, and uncensored communication.
-* No censorship: After something is published there is no way to remove it.
-* No single point of failure: Content remains online even if only one peer is serving it.
-* Impossible to shut down: It's nowhere because it's everywhere. Content is served by any user who wishes to.
-* Fast: ZeroNet uses BitTorrent technology to deliver content faster than centralised servers.
-* Works offline: You can access the site even if your internet is unavailable.
-* Secure: Content ownership is secured using the same cryptography that secures your Bitcoin wallet.
+* Мы верим в открытую, свободную и бесцензурную связь.
+* Без цензуры: Не существует способа удалить опубликованные материалы.
+* Отсутствие единой точки отказа: Контент остается доступным в сети пока существует хотя бы один равный подписчик.
+* Невозможно прикрыть: Это не возможно, потому что сайт хранится везде. Содержимое поддерживается любым желающим пользователем.
+* Быстро: ZeroNet использует технологию BitTorrent для доставки контента, которая быстрее, чем обычные веб-серверы.
+* Работает в оффлайне: Вы можете получить доступ к сайту, даже если на данный момент у Вас отсутствует интернет.
+* Безопасность: Подтверждение авторства контента использует ту же технологии криптографии, которая обеспечивает защиту вашего кошелек Bitcoin.
 
 [comment]: <> (I'm unsure about the following bit. Thoughts?)
 [comment]: <> (# What problem is ZeroNet solving?)
@@ -37,56 +37,53 @@ ZeroNet comes with a built-in SQL database. This makes content-heavy site develo
 [comment]: <> (This architecture means that when a site URL is created, as long as one peer is serving it, there is no way to take the URL down.)
 
 
-# Features
- * Easy, zero configuration setup.
- * Password-less [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
-   based authorization: Your account is protected by the same cryptography as your Bitcoin wallet.
- * Real-time updated sites.
- * Namecoin .bit domains support.
- * SQL Database support: Allows for easier site development and faster page load times.
- * Anonymity: Full Tor network support with .onion hidden services instead of ipv4 addresses
- * TLS encrypted connections.
- * Automatic, uPnP port opening.
- * Plugin for multiuser (openproxy) support.
- * Works with any browser/OS.
+# Особенности
+ * Легко, работает "из коробки".
+ * Безпарольная авторизация [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki): Ваша учетная запись защищена технологией криптографии Bitcoin, используемой в электронных кошельках.
+ * Обновление сайтов в режиме реального времени.
+ * Поддержка доменов .bit DNS-системой Namecoin.
+ * Поддержка базы данных SQL: позволяет упростить разработку сайта и обсепечить более быстую загрузку страниц.
+ * Анонимность: Полная поддержка сети Tor со скрытыми сервисами .onion в замен использования адресов IPv4.
+ * Поддержка шифрованных соединений TLS.
+ * Автоматический, открытый uPnP-порт.
+ * Плагин для многопользовательской общедоступной поддержки.
+ * Работает в любом браузером на любой операционной системе.
 
 
-# How does it work?
+# Как это работает?
 
-* After you install and run ZeroNet, you open a site by visiting:
+* После установки запуска ZeroNet Вы открываете сайты, доступные по адресам:
   `http://127.0.0.1:43110/{zeronet_site_address}`
-  (eg.  `http://127.0.0.1:43110/1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D`).
-* ZeroNet will then use the BitTorrent network to find peers that are seeding the site and will download the site content (HTML, CSS, JS...) from these peers.
-* Each visited site becomes also served by you.
-* Every site contains a list of all files used in the site in a SHA512 hash and a signature generated using the site owner private key.
-* If the site owner modifies the site, then he/she signs a new list and publishes it to the peers.
-  After the peers have verified the files list integrity (using the
-  signature), they download the modified files and publish the new content to
-  other peers.
+  (на пример  `http://127.0.0.1:43110/1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D`).
+* ZeroNet использует сеть BitTorrent, чтобы найти коллег, которые публикуют этот сайт и получают от них содержимое (HTML, CSS, JS ...).
+* Каждый раз, посещая сайты, Вы начинаете распространять скаченный контент остальным.
+* Каждый сайт содержит список используемых файлов с проверкой sha512 хэша и подписи, генерируемой с помощью секретного ключа автора сайта.
+* Если владелец сайта отредактирует свой сайт, то он занова подписывает весь список и публикует его среди подписчиков.
+  После того, как подписчики проверят целостность и достоверность нового контента, они скачивают обновления и распространяют их остальным.
 
-##### [Slideshow about ZeroNet cryptography, content updates, multi-user sites &raquo;](https://docs.google.com/presentation/d/1_2qK1IuOKJ51pgBvllZ9Yu7Au2l551t3XBgyTSvilew/pub?start=false&loop=false&delayms=3000)
+##### [Презентация на тему технологии криптографии ZeroNet, обновления контента сайта и многопользовательского распространения сайтов &raquo;](https://docs.google.com/presentation/d/1_2qK1IuOKJ51pgBvllZ9Yu7Au2l551t3XBgyTSvilew/pub?start=false&loop=false&delayms=3000)
 
 
-# Screenshots
+# Скриншоты
 
-![Screenshot](./img/zerohello.png)
+![Скриншот](./img/zerohello.png)
 
 ![ZeroTalk](./img/zerotalk.png)
 
-##### [More screenshots &raquo;](/using_zeronet/sample_sites/)
+##### [Еще скриншоты &raquo;](/using_zeronet/sample_sites/)
 
-# Current limitations
+# Существующие ограничения
 
-* No torrent-like, file splitting for big file support
-* File transactions are not compressed ~~or encrypted yet~~ (TLS encryption added)
-* No private sites
+* Отсутствие поддержки torrent-технологии разделения больших файлов
+* Отсутсвие сжатия и шифрования (пока) при передачи данных (используется TLS шифрование)
+* Отсутсвие сайтов с ограниченным доступом
 
-# Help to keep this project alive
+# Помощь для поддержании проекта
 
 Bitcoin: 1QDhxQ6PraUZa21ET5fYUCPgdrwBomnFgX
 
 
-### Thank you!
+### Благодарность!
 
-* More info, help, changelog, zeronet sites: [http://www.reddit.com/r/zeronet/](http://www.reddit.com/r/zeronet/)
-* Come, chat with us: [#zeronet @ FreeNode](https://kiwiirc.com/client/irc.freenode.net/zeronet) or on [gitter](https://gitter.im/HelloZeroNet/ZeroNet)
+* Больше информации о поддержке, обновлений и новых сайтов ZeroNet можно найти: [http://www.reddit.com/r/zeronet/](http://www.reddit.com/r/zeronet/)
+* Наш официальный чат: [#zeronet @ FreeNode](https://kiwiirc.com/client/irc.freenode.net/zeronet) or on [gitter](https://gitter.im/HelloZeroNet/ZeroNet)

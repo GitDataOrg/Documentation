@@ -1,28 +1,28 @@
-site_name: ZeroNet
+site_name: ZeroNet [RU]
 site_url: https://github.com/HelloZeroNet/ZeroNet
 site_description: Публикация децентрализованных веб-сайтов с использованием технологий криптографии Bitcoin и пирринговой сети BitTorrent
 
-repo_url: https://github.com/GitDataOrg/Documentation
+repo_url: https://github.com/GitDataOrg/ZeroNetDocumentation
 
 extra_css: [docs.css]
 extra_javascript: [docs.js]
 
 
 pages:
-- Introduction: "index.md"
-- Frequently asked questions: "faq.md"
-- Start using ZeroNet:
-  - "Installing": using_zeronet/installing.md
-  - "Sample sites": using_zeronet/sample_sites.md
-  - "Create new site": using_zeronet/create_new_site.md
-- "Site Development":
-  - "Getting Started": "site_development/getting_started.md"
-  - "ZeroFrame API reference": "site_development/zeroframe_api_reference.md"
-  - "Structure of content.json": "site_development/content_json.md"
-  - "Structure of dbschema.json": "site_development/dbschema_json.md"
-- "Help ZeroNet development":
-  - "Contributing to ZeroNet": "help_zeronet/contributing.md"
-  - "Network protocol": "help_zeronet/network_protocol.md"
-  - "Donation": "help_zeronet/donate.md"
+- Введение: "index.md"
+- Часто задаваемые вопросы: "faq.md"
+- Запускаем ZeroNet:
+  - "Установка": using_zeronet/installing.md
+  - "Простой сайт": using_zeronet/sample_sites.md
+  - "Создание сайта": using_zeronet/create_new_site.md
+- "Разработка сайтов":
+  - "Вступление": "site_development/getting_started.md"
+  - "Справка по ZeroFrame API": "site_development/zeroframe_api_reference.md"
+  - "Структура файла content.json": "site_development/content_json.md"
+  - "Структура файла dbschema.json": "site_development/dbschema_json.md"
+- "Помощь в разработке ZeroNet":
+  - "Вклад в ZeroNet": "help_zeronet/contributing.md"
+  - "Сетевой протокол": "help_zeronet/network_protocol.md"
+  - "Финансовая помощь": "help_zeronet/donate.md"
 
 theme_dir: readthedocs
