@@ -76,9 +76,11 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#installing-zeronet">Installing ZeroNet</a></li>
+                <li class="toctree-l3"><a href="#zeronet">Установка ZeroNet</a></li>
                 
-                    <li><a class="toctree-l4" href="#manual-install-for-debian-linux">Manual install for Debian Linux</a></li>
+                    <li><a class="toctree-l4" href="#_1">Ручная установка</a></li>
+                
+                    <li><a class="toctree-l4" href="#debian-linux">Debian Linux</a></li>
                 
                     <li><a class="toctree-l4" href="#vagrant">Vagrant</a></li>
                 
@@ -215,35 +217,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="installing-zeronet">Installing ZeroNet</h1>
+                <h1 id="zeronet">Установка ZeroNet</h1>
 <ul>
-<li>Download ZeroBundle package: <a href="https://github.com/HelloZeroNet/ZeroBundle/releases/download/0.1.1/ZeroBundle-v0.1.1.zip">Microsoft Windows</a>, <a href="https://github.com/HelloZeroNet/ZeroBundle/releases/download/0.1.1/ZeroBundle-mac-v0.1.1.zip">Apple OS X</a>, <a href="https://github.com/HelloZeroNet/ZeroBundle/releases/download/0.1.1/ZeroBundle-linux64-v0.1.1.tar.gz">Linux 64bit</a>, <a href="https://github.com/HelloZeroNet/ZeroBundle/releases/download/0.1.1/ZeroBundle-linux32-v0.1.1.tar.gz">Linux 32bit</a></li>
-<li>Unpack anywhere</li>
-<li>Run <code>ZeroNet.cmd</code> (win), <code>ZeroNet(.app)</code> (osx), <code>ZeroNet.sh</code> (linux)</li>
+<li>Загрузите пакет ZeroBundle своей операционной системы: <a href="https://github.com/HelloZeroNet/ZeroBundle/releases/download/0.1.1/ZeroBundle-v0.1.1.zip">Microsoft Windows</a>, <a href="https://github.com/HelloZeroNet/ZeroBundle/releases/download/0.1.1/ZeroBundle-mac-v0.1.1.zip">Apple OS X</a>, <a href="https://github.com/HelloZeroNet/ZeroBundle/releases/download/0.1.1/ZeroBundle-linux64-v0.1.1.tar.gz">Linux 64bit</a>, <a href="https://github.com/HelloZeroNet/ZeroBundle/releases/download/0.1.1/ZeroBundle-linux32-v0.1.1.tar.gz">Linux 32bit</a>;</li>
+<li>Разрахивируйте в любом месте;</li>
+<li>Запустите <code>ZeroNet.cmd</code> (для Windows), <code>ZeroNet(.app)</code> (для OS X), <code>ZeroNet.sh</code> (для Linux).</li>
 </ul>
-<p>It downloads the latest version of ZeroNet then starts it automatically.</p>
-<h4 id="manual-install-for-debian-linux">Manual install for Debian Linux</h4>
+<p>После запуска будет загружена и автоматически запущена последняя версия ZeroNet.</p>
+<h4 id="_1">Ручная установка</h4>
+<h4 id="debian-linux"><a href="https://www.debian.org/">Debian Linux</a></h4>
 <ul>
 <li><code>sudo apt-get update</code></li>
 <li><code>sudo apt-get install msgpack-python python-gevent</code></li>
 <li><code>wget https://github.com/HelloZeroNet/ZeroNet/archive/master.tar.gz</code></li>
 <li><code>tar xvpfz master.tar.gz</code></li>
 <li><code>cd ZeroNet-master</code></li>
-<li>Start with <code>python zeronet.py</code></li>
-<li>Open http://127.0.0.1:43110/ in your browser</li>
+<li>Выполните команду <code>python zeronet.py</code></li>
+<li>Откройте страницу http://127.0.0.1:43110/ в браузере</li>
 </ul>
 <h3 id="vagrant"><a href="https://www.vagrantup.com/">Vagrant</a></h3>
 <ul>
 <li><code>vagrant up</code></li>
-<li>Access VM with <code>vagrant ssh</code></li>
+<li>Подключитесь к VM <code>vagrant ssh</code></li>
 <li><code>cd /vagrant</code></li>
-<li>Run <code>python zeronet.py --ui_ip 0.0.0.0</code></li>
-<li>Open http://127.0.0.1:43110/ in your browser</li>
+<li>Выполните команду <code>python zeronet.py --ui_ip 0.0.0.0</code></li>
+<li>Откройте страницу http://127.0.0.1:43110/ в браузере</li>
 </ul>
 <h3 id="docker"><a href="https://www.docker.com/">Docker</a></h3>
 <ul>
 <li><code>docker run -d -v &lt;local_data_folder&gt;:/root/data -p 15441:15441 -p 43110:43110 nofish/zeronet</code></li>
-<li>Open http://127.0.0.1:43110/ in your browser</li>
+<li>Откройте страницу http://127.0.0.1:43110/ в браузере</li>
 </ul>
 <h3 id="virtualenv"><a href="https://virtualenv.readthedocs.org/en/latest/">Virtualenv</a></h3>
 <ul>
@@ -251,7 +254,7 @@
 <li><code>source env/bin/activate</code></li>
 <li><code>pip install msgpack-python gevent</code></li>
 <li><code>python zeronet.py</code></li>
-<li>Open http://127.0.0.1:43110/ in your browser</li>
+<li>Откройте страницу http://127.0.0.1:43110/ в браузере</li>
 </ul>
               
             </div>
