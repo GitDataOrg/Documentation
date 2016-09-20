@@ -1,39 +1,39 @@
-# Overview
+# Введение
 
-ZeroNet allows you to publish static and dynamic sites.
+ZeroNet позволяет создавать как статичные, так и сайты с динамическим контентом.
 
-Although ZeroNet can't run scripting languages like PHP or Ruby, you can create dynamic sites using ZeroNet's API (called ZeroFrame), JavaScript (or CoffeeScript) and the built-in SQL database.
+Тем не менее технология ZeroNet исключает возможность использования языков сценариев таких как PHP или Ruby. Вы можете реализовывать динамичность за счет API, встроенного ZeroNet и называемого ZeroFrame, скпритов JavaScript (или CoffeeScript) и встроенной базы данных SQL.
 
-## ZeroNet Debug mode
+## Режим отладки ZeroNet
 
-ZeroNet comes with a `--debug` flag that will make site development easier.
+ZeroNet, запущенный с параметром `--debug`, позволит вам упросить процесс разработки.
 
-To run ZeroNet in debug mode use: `python zeronet.py --debug`
+Чтобы запустить ZeroNet в режиме отладки используйте следующую команду: `python zeronet.py --debug`
 
-### Debug mode features:
+### Особенности режима отладки:
 
-- Automatic CoffeeScript -> JavaScript conversion (All examples used in this documentation and sample sites are written in [CoffeeScript](http://coffeescript.org/))
-- Debug messages will appear in the console
-- Auto reload of some source files (UiRequest, UiWebsocket, FileRequest) on modification to prevent restarting (Requires [PyFilesystem](http://pyfilesystem.org/) on GNU/Linux)
-- `http://127.0.0.1:43110/Debug` Traceback and interactive Python console at the last error position (using the wonderful Werkzeug debugger - Requires [Werkzeug](http://werkzeug.pocoo.org/))
-- `http://127.0.0.1:43110/Console` Spawns an interactive Python console (Requires [Werkzeug](http://werkzeug.pocoo.org/))
+- Автоматическая генерация кода JavaScript из CoffeeScript (все примеры, использованные в данной документации и примеры сайтов, написаны на [CoffeeScript](http://coffeescript.org/))
+- В консоль будет выводиться отладочная информация
+- Автоматическая перегрузка некоторых файлов (UiRequest, UiWebsocket, FileRequest) при изменении вместо перезагрузки страниц (требует [PyFilesystem](http://pyfilesystem.org/) on GNU/Linux)
+- Отладчик `http://127.0.0.1:43110/Debug` Интерактивная консоль Python с позиционированием на записи последней ошибки (используется прекрасный отладчик Werkzeug - требует [Werkzeug](http://werkzeug.pocoo.org/))
+- Консоль `http://127.0.0.1:43110/Console` вызывает интерактивную консоль Python (требует [Werkzeug](http://werkzeug.pocoo.org/))
 
-### Extra features (works only for sites that you own)
+### Дополнительные компоненты (доступно только для сайта, владельцем которых вы являетесь)
 
- - Merged CSS files: All CSS files inside the site folder will be merged into one file called `all.css`. You can choose to include only this file to your site. If you want to keep the other CSS files to make the development easier, you can add them to the ignore key of your `content.json`. This way, they won't be published with your site. (eg: add to your `content.json` `"ignore": "(js|css)/(?!all.(js|css))"` this will ignore all CSS and JS files except `all.js` and `all.css`)
- - Merged JS files: All JS files inside the site folder will be merged into one file called `all.js`. If a CoffeeScript compiler is present (bundled for Windows) it will convert `.coffee` to `.js`.
- - Order in which files are merged into all.css/all.js: Files inside subdirectories of the css/js folder comes first; Files in the css/js folder will be merged according to file name ordering (01_a.css, 02_a.css, etc)
+ - Объединенные файлы CSS: все файлы стилей CSS, находящиеся внутри папки сайт, будут объединины в один с имененем `all.css`. Теперь вы можете указывать только этот файл. Если для разработки необходимо сохранить другие файлы CSS, укажите их в разделе в разедел ignore конфигурационного файла `content.json`. В этом случае они не будут опубликованы на сайте. (на пример, если добавить в `content.json` `"ignore": "(js|css)/(?!all.(js|css))"`, тогда при публикации будут пропущены  все файлы CSS и JS, исключая генерируемые `all.js` и `all.css`)
+ - Объединенные файлы JavaSctipt (JS): Все файлы JS, находящиеся в папке сайта, будут объединины в один с имененем `all.js`. Если используется "компилятор" CoffeeScript (в комплекте с Windows), то файлы `.coffee` будут конвертированы в `.js`.
+ - Порядок объединения файлов в all.css/all.js: файлы, содержащиеся в дочерних папках css/js будут добавлены первыми; файлы папки css/js обрабатываются согласно их наименованию (01_a.css, 02_a.css, etc)
 
-### ZeroNet site development tutorial
+### Руководство по разработке сайтов ZeroNet
 
-#### [Part #1](http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:43:ZeroNet+site+development+tutorial+1):
+#### [Часть #1](http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:43:ZeroNet+site+development+tutorial+1):
 
- - Site creation,
- - First ZeroFrame API calls)
+ - Создание сайта,
+ - Вызов API ZeroFrame 
 
-#### [Part #2](http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:46:ZeroNet+site+development+tutorial+2):
+#### [Часть #2](http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:46:ZeroNet+site+development+tutorial+2):
 
- - User login
- - Publish new content to network
- - SQL Database insert and query
- - Real-time update your site
+ - Использование авторизации
+ - Публикация нового контента в сети
+ - Подключение базы данных SQL и использование запросов
+ - Обновление сайта в режиме реального времени

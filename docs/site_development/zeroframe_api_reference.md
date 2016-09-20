@@ -1,31 +1,31 @@
-# ZeroFrame API Reference
+# Справка по ZeroFrame API
 
 
 
-# Wrapper
+# Обертка
 
-_These commands handled by wrapper frame and does not sent to UiServer using websocket_
+_Эти команды обрабатываются оберточной конструкцией и не отправляются на сервер с помощью WebSocket_
 
 
 #### wrapperConfirm _message, [button_caption]_
-Display a notification with confirm button
+Отображает уведомление с кнопой подтверждения
 
-Parameter              | Description
+Параметр               | Описание
                   ---  | ---
-**message**            | The message you want to display
-**button_caption** (optional) | Caption of the confirmation button (default: OK)
+**message**            | Текст выводимого сообщения
+**button_caption** (опционально) | Надпись кнопки подтверждения (по умолчанию: OK)
 
-**Return**: True if clicked on button
+**Результат**: True в случае нажатия на кнопку
 
-**Example:**
+**Пример:**
 ```coffeescript
-# Delete site
+# Удалить сайт
 siteDelete: (address) ->
 	site = @sites[address]
 	title = site.content.title
 	if title.length > 40
 		title = title.substring(0, 15)+"..."+title.substring(title.length-10)
-	@cmd "wrapperConfirm", ["Are you sure you sure? <b>#{title}</b>", "Delete"], (confirmed) =>
+	@cmd "wrapperConfirm", ["Вы уверены? <b>#{title}</b>", "Delete"], (confirmed) =>
 		@log "Deleting #{site.address}...", confirmed
 		if confirmed
 			$(".site-#{site.address}").addClass("deleted")
@@ -37,13 +37,13 @@ siteDelete: (address) ->
 
 
 #### wrapperGetLocalStorage
-**Return**: Browser's local store for the site
+**Результат**: Локальное хранилище браузера для сайта
 
-**Example:**
+**Пример:**
 ```coffeescript
 @cmd "wrapperGetLocalStorage", [], (res) =>
 	res ?= {}
-	@log "Local storage value:", res
+	@log "Значение в локальном хранилище:", res
 ```
 
 
@@ -51,26 +51,25 @@ siteDelete: (address) ->
 
 #### wrapperPermissionAdd _permission_
 
-Request new permission for site
+Запрашивает права доступа для сайта
 
-
-Parameter        | Description
+Параметр         | Описание
              --- | ---
-**permission**   | Name of permission (eg. Merger:ZeroMe)
+**permission**   | Наименование набора прав доступа (на пример. Merger:ZeroMe)
 
 ---
 
 
 #### wrapperSetLocalStorage _data_
-Set browser's local store data stored for the site
+Устанавливает локальное хранилище для сайта
 
-Parameter              | Description
-                  ---  | ---
-**data**               | Any data structure you want to store for the site
+Параметр              | Описание
+                 ---  | ---
+**data**              | Любая структура данных, которую вам необходимо держать в хранилище
 
-**Return**: None
+**Результат**: не возвращается
 
-**Example:**
+**Пример:**
 ```coffeescript
 Page.local_storage["topic.#{@topic_id}_#{@topic_user_id}.visited"] = Time.timestamp()
 Page.cmd "wrapperSetLocalStorage", Page.local_storage
@@ -81,19 +80,19 @@ Page.cmd "wrapperSetLocalStorage", Page.local_storage
 
 
 #### wrapperNotification _type, message, [timeout]_
-Display a notification
+Выводит уведомление
 
-Parameter              | Description
+Параметр               | Описание
                   ---  | ---
-**type**               | Possible values: info, error, done
-**message**            | The message you want to display
-**timeout** (optional) | Hide display after this interval (milliseconds)
+**type**               | Доступные типы сообщений: info, error, done
+**message**            | Текст выводимого сообщения
+**timeout** (опционально) | Скрыть сообщение по окончанию интервала (в милисекундах)
 
-**Return**: None
+**Результат**: не возвращается
 
-**Example:**
+**Пример:**
 ```coffeescript
-@cmd "wrapperNotification", ["done", "Your registration has been sent!", 10000]
+@cmd "wrapperNotification", ["done", "Ваша регистрационные данные были отправлены!", 10000]
 ```
 
 
@@ -102,41 +101,41 @@ Parameter              | Description
 
 #### wrapperPrompt _message, [type]_
 
-Prompt text input from user
+Запрашивает у пользователя ввод текста
 
-Parameter           | Description
+Параметр            | Описание
                ---  | ---
-**message**         | The message you want to display
-**type** (optional) | Type of the input (default: text)
+**message**         | Текст выводимого сообщения
+**type** (optional) | Тип вводимого значения (по умолчанию: text)
 
-**Return**: Text entered to input
+**Результат**: Введенное значение
 
-**Example:**
+**Пример:**
 ```coffeescript
-# Prompt the private key
-@cmd "wrapperPrompt", ["Enter your private key:", "password"], (privatekey) =>
+# Запрос секретного ключа
+@cmd "wrapperPrompt", ["Пожалуйста, введите ваш секретный ключ:", "password"], (privatekey) =>
 	$(".publishbar .button").addClass("loading")
-	# Send sign content.json and publish request to server
+	# Отправка подписанного content.json и отправка серверу запроса на публикацию
 	@cmd "sitePublish", [privatekey], (res) =>
 		$(".publishbar .button").removeClass("loading")
-		@log "Publish result:", res
+		@log "Реузльтат публикации:", res
 ```
 
 
 #### wrapperSetViewport _viewport_
 
-Set sites's viewport meta tag content (required for mobile sites)
+Установка мета-тега `viewport` (необходимо для мобильных устройств)
 
 
-Parameter           | Description
+Параметр            | Описание
                ---  | ---
-**viewport**        | The viewport meta tag content
+**viewport**        | Значение тега `viewport`
 
 **Return**: None
 
-**Example:**
+**Пример:**
 ```coffeescript
-# Prompt the private key
+# Установка мета-тега viewport
 @cmd "wrapperSetViewport", "width=device-width, initial-scale=1.0"
 ```
 
@@ -145,25 +144,25 @@ Parameter           | Description
 
 # UiServer
 
-The UiServer is for ZeroNet what the LAMP setup is for normal websites.
+UiServer для ZeroNet как серверный набор LAMP для обычных сайтов.
 
-The UiServer will do all the 'backend' work (eg: querying the DB, accessing files, etc). This are the API calls you will need to make your site dynamic.
+UiServer делает всю работу 'бэкенда' (на пример: запросы к базе данных, доступ к файловым ресурсам и так далее). Он содержить вызов API, необходимые для создания динамического контента сайтов.
 
 
 
 #### certAdd _domain, auth_type, auth_user_name, cert_
-Add a new certificate to current user.
+Создает новые сертификат для текущего пользователя.
 
-Parameter            | Description
+Параметр             | Описание
                  --- | ---
-**domain**           | Certificate issuer domain
-**auth_type**        | Auth type used on registration
-**auth_user_name**   | User name used on registration
-**cert**             | The cert itself: `auth_address#auth_type/auth_user_name` string signed by the cert site owner
+**domain**           | Домен, для которого выпускается сертификат
+**auth_type**        | Способ авторизации при регистрации
+**auth_user_name**   | Логин пользователя при регистрации
+**cert**             | Сам сертификат: `auth_address#auth_type/auth_user_name` строка, подписанная сертификатом владельца сайта
 
-**Return**: "ok", "Not changed" or {"error": error_message}
+**Результат**: "ok", "Not changed" или ошибку {"error": error_message}
 
-**Example:**
+**Пример:**
 ```coffeescript
 @cmd "certAdd", ["zeroid.bit", auth_type, user_name, cert_sign], (res) =>
 	$(".ui").removeClass("flipped")
@@ -176,15 +175,15 @@ Parameter            | Description
 
 
 #### certSelect _accepted_domains_
-Display certificate selector.
+Отображение выбора сертификата.
 
-Parameter            | Description
+Параметр             | Описание
                  --- | ---
-**accepted_domains** | List of domains that accepted by site as authorization provider
+**accepted_domains** | Список доменов, принимающих в качестве поставщиков авторизации
 
-**Return**: None
+**Результат**: не возвращается
 
-**Example:**
+**Пример:**
 ```coffeescript
 @cmd "certSelect", {"accepted_domains": ["zeroid.bit"]}
 ```
@@ -195,33 +194,33 @@ Parameter            | Description
 
 #### channelJoin _channel_
 
-Request notifications about sites's events.
+Запрос уведомлений о событиях сайта.
 
-Parameter   | Description
+Параметр    | Описание
         --- | ---
-**channel** | Channel to join
+**channel** | Используемый канал
 
-**Return**: None
+**Результат**: None
 
-**Channels**:
+**Каналы**:
 
- - **siteChanged** (joined by default)<br>Events: peers_added, file_started, file_done, file_failed
+ - **siteChanged** (используется по умолчанию)<br>События: peers_added, file_started, file_done, file_failed
 
-**Example**:
+**Пример**:
 ```coffeescript
-# Wrapper websocket connection ready
+# Подключение через WebSocket готово
 onOpenWebsocket: (e) =>
 	@cmd "channelJoinAllsite", {"channel": "siteChanged"}
 
-# Route incoming requests and messages
+# Маршрутизация входящих запросов и сообщений
 route: (cmd, data) ->
 	if cmd == "setSiteInfo"
-		@log "Site changed", data
+		@log "Сайт изменен", data
 	else
-		@log "Unknown command", cmd, data
+		@log "неизвестная команда", cmd, data
 ```
 
-**Example event data**
+**Пример данных события**
 ```json
 {
 	"tasks":0,
@@ -229,7 +228,7 @@ route: (cmd, data) ->
 	"address":"1RivERqttrjFqwp9YH1FviduBosQPtdBN",
 	"next_size_limit":10,
 	"event":[ "file_done", "index.html" ],
-	[...] # Same as siteInfo return dict
+	[...] # Идентично возвращаемому значению siteInfo (см. описание далее)
 }
 
 ```
@@ -239,21 +238,21 @@ route: (cmd, data) ->
 
 
 #### dbQuery _query_
-Run a query on the sql cache
+Запуск запроса к кэшу SQL
 
-Parameter            | Description
+Параметр             | Описание
                  --- | ---
-**query**            | Sql query command
+**query**            | Команда SQL
 
-**Return**: <list> Result of the query
+**Результат**: <list> Результат запроса
 
-**Example:**
+**Пример:**
 ```coffeescript
-@log "Updating user info...", @my_address
+@log "Обновление информации о пользователе...", @my_address
 Page.cmd "dbQuery", ["SELECT user.*, json.json_id AS data_json_id FROM user LEFT JOIN json USING(path) WHERE path='#{@my_address}/data.json'"], (res) =>
-	if res.error or res.length == 0 # Db not ready yet or No user found
+	if res.error or res.length == 0 # База данных еще не готова или пользователь не найден
 		$(".head-user.visitor").css("display", "")
-		$(".user_name-my").text("Visitor")
+		$(".user_name-my").text("Посетитель")
 		if cb then cb()
 		return
 
@@ -267,22 +266,22 @@ Page.cmd "dbQuery", ["SELECT user.*, json.json_id AS data_json_id FROM user LEFT
 ---
 
 #### fileGet _inner_path, [required]_
-Get file content
+Получает содержимое файла
 
-Parameter        | Description
+Параметр         | Описание
              --- | ---
-**inner_path**   | The file you want to get
-**required** (optional) | Try and wait for the file if it's not exists. (default: True)
+**inner_path**   | Имя запрашиваемого файла
+**required** (опционально) | Ожидание создания файла в случае его отсутствия (по умолчанию: True).
 
-**Return**: <string> The content of the file
+**Результат**: <string> Содержимое запрошенного файла
 
 
-**Example:**
+**Пример:**
 ```coffeescript
-# Upvote a topic on ZeroTalk
+# Голосование в теме ZeroTalk
 submitTopicVote: (e) =>
-	if not Users.my_name # Not registered
-		Page.cmd "wrapperNotification", ["info", "Please, request access before posting."]
+	if not Users.my_name # Не зарегистрирован
+		Page.cmd "wrapperNotification", ["info", "Пожалуйста, получите доступ для публикации."]
 		return false
 
 	elem = $(e.currentTarget)
@@ -291,21 +290,21 @@ submitTopicVote: (e) =>
 
 	Page.cmd "fileGet", [inner_path], (data) =>
 		data = JSON.parse(data)
-		data.topic_votes ?= {} # Create if not exits
+		data.topic_votes ?= {} # Создать в случае отсутствия
 		topic_address = elem.parents(".topic").data("topic_address")
 
-		if elem.hasClass("active") # Add upvote to topic
+		if elem.hasClass("active") # Добавить голосование по теме
 			data.topic_votes[topic_address] = 1
-		else # Remove upvote from topic
+		else # Удаление голосование по теме
 			delete data.topic_votes[topic_address]
 
-		# Write file and publish to other peers
+		# Запись в файл и публикация другим пользователям
 		Page.writePublish inner_path, Page.jsonEncode(data), (res) =>
 			elem.removeClass("loading")
 			if res == true
-				@log "File written"
+				@log "Файл записан"
 			else # Failed
-				elem.toggleClass("active") # Change back
+				elem.toggleClass("active") # Возвращаем состояние
 
 	return false
 ```
@@ -315,38 +314,38 @@ submitTopicVote: (e) =>
 
 
 #### fileDelete _inner_path_
-Get file content
+Удаление файла
 
-Parameter        | Description
+Параметр         | Описание
              --- | ---
-**inner_path**   | The file you want to delete
+**inner_path**   | Имя файла, подлежащего удалению
 
-**Return**: "ok" on success else the error message
+**Результат**: "ok" в случае успешного удаления или сообщение об ошибке
 
 
 ---
 
 
 #### fileQuery _dir_inner_path, query_
-Simple json file query command
+Простая команда запроса файла json
 
-Parameter            | Description
+Параметр             | Описание
                  --- | ---
-**dir_inner_path**   | Pattern of queried files
-**query**            | Query command
+**dir_inner_path**   | Директория запрашиваемого файла
+**query**            | Команда запроса
 
-**Return**: <list> Matched content
+**Результат**: <list> Удовлетворяющий запросу контент
 
-**Query examples:**
+**Пример запроса:**
 
- - `["data/users/*/data.json", "topics"]`: Returns all topics node from all user files
- - `["data/users/*/data.json", "comments.1@2"]`: Returns `user_data["comments"]["1@2"]` value from all user files
- - `["data/users/*/data.json", ""]`: Returns all data from users files
+ - `["data/users/*/data.json", "topics"]`: Возвращает все сообщения по теме от всех пользоваталей
+ - `["data/users/*/data.json", "comments.1@2"]`: Возвращает значения `user_data["comments"]["1@2"]` от всех пользателей
+ - `["data/users/*/data.json", ""]`: Возвращает все данные из файлов пользователей
 
-**Example:**
+**Пример:**
 ```coffeescript
 @cmd "fileQuery", ["data/users/*/data.json", "topics"], (topics) =>
-	topics.sort (a, b) -> # Sort by date
+	topics.sort (a, b) -> # Сортировка по дате
 		return a.added - b.added
 	for topic in topics
 		@log topic.topic_id, topic.inner_path, topic.title
@@ -357,15 +356,15 @@ Parameter            | Description
 
 
 #### fileRules _inner_path_
-Return the rules for the file.
+Получение правил для файлов
 
-Parameter            | Description
+Параметр             | Описание
                  --- | ---
-**inner_path**       | File inner path
+**inner_path**       | Путь к файлу
 
-**Return**: <list> Matched content
+**Результат**: <list> Удовлетворяющий запросу контент
 
-**Example result:**
+**Пример результата:**
 
 ```json
 {
@@ -378,7 +377,7 @@ Parameter            | Description
 }
 ```
 
-**Example:**
+**Пример:**
 ```coffeescript
 @cmd "fileRules", "data/users/1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj/content.json", (rules) =>
 	@log rules
@@ -390,22 +389,21 @@ Parameter            | Description
 
 #### fileWrite _inner_path, content_
 
-Write file content
+Запись содержимого файла
 
-
-Parameter        | Description
+Параметр             | Описание
              --- | ---
-**inner_path**   | Inner path of the file you want to write
-**content**      | Content you want to write to file (base64 encoded)
+**inner_path**   | Путь к файлу
+**content**      | Содержимое записываемого файла (в кодировке [base64](https://ru.wikipedia.org/wiki/Base64))
 
-**Return**: "ok" on success else the error message
+**Результат**: "ok" в случае успешной записи или сообщение об ошибке
 
-**Example:**
+**Пример:**
 ```coffeescript
 writeData: (cb=null) ->
-	# Encode to json, encode utf8
+	# В формате json в кодировке utf8
 	json_raw = unescape(encodeURIComponent(JSON.stringify({"hello": "ZeroNet"}, undefined, '\t')))
-	# Convert to to base64 and send
+	# Кодирование в base64 и отправка
 	@cmd "fileWrite", ["data.json", btoa(json_raw)], (res) =>
 		if res == "ok"
 			if cb then cb(true)
@@ -414,7 +412,7 @@ writeData: (cb=null) ->
 			if cb then cb(false)
 ```
 
-_Note:_ to write files that not in content.json yet, you must have `"own": true` in `data/sites.json` at the site you want to write
+_Заметка:_ для записи файлов, отсутствующих в `content.json`, вы должны указать параметр `"own": true` в `data/sites.json` на сайте, в который вы ходите записать
 
 
 ---

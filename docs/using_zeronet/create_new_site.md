@@ -1,10 +1,10 @@
-# Create new ZeroNet site
+# Создание сайта ZeroNet
 
 
-### 1. Create site structure
+### 1. Подготовка структуры сайта
 
-* Shut down ZeroNet if it is running
-* Browse to the folder where ZeroNet is installed and run:
+* Если ZeroNet запущен, остановите его
+* Откройте папку установки ZeroNet и выполните команду:
 
 ```bash
 $ zeronet.py siteCreate
@@ -17,15 +17,15 @@ $ zeronet.py
 ...
 ```
 
-- This will create the initial files for your site inside ```data/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2```.
+- Эта команда подготовит исходные файлы для сайта в папке ```data/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2```. Сохраните сгенерированный секретный (private key) и запомните идентификатор (адрес) сайта, они вам понадобятся в будущем неоднократно.
 
-> __Note:__
-> Windows users using the bundle version must browse into the ZeroBundle/ZeroNet folder and run `"../Python/python.exe" zeronet.py siteCreate`
+> __Замечание:__
+> Пользователям Windows, использующие пакетную (bundle) версию, необходимой перейти в папку ZeroBundle/ZeroNet и выполнить `"../Python/python.exe" zeronet.py siteCreate`
 
-### 2. Build/Modify site
+### 2. Создание и изменение сайта
 
-* Update the site files located in ```data/[your site address key]``` (eg: 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2).
-* When your site is ready run:
+* Обновите файлы сайта, расположенные в папке ```data/[ключ вашего сайта]``` (на пример: 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2).
+* Когда сайт будет готов для запуска, выполните:
 
 ```bash
 $ zeronet.py siteSign 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2
@@ -33,11 +33,11 @@ $ zeronet.py siteSign 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2
 Private key (input hidden):
 ```
 
-* Enter the private key you got when you created the site. This will sign all files so peers can verify that the site owner is who made the changes.
+* Введите секретный ключ, полученный при создании сайта. This will sign all files so peers can verify that the site owner is who made the changes.
 
-### 3. Publish site changes
+### 3. Публикация изменений
 
-* In order to inform peers about the changes you made you need to run:
+* Для оповещения пользователей о новой редации сайта вам необходимо выполнить команду:
 
 ```bash
 $ zeronet.py sitePublish 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2
@@ -47,8 +47,8 @@ Site:13DNDk..bhC2 Successfuly published to 3 peers
 - Serving files....
 ```
 
-* That's it! You've successfully signed and published your modifications.
-* Your site will be accessible from: ```http://localhost:43110/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2```
+* Вот и все! Сейчас вы успешно подписали и опубликовали обвновления сайта.
+* Ваш теперь доступен по адресу: ```http://localhost:43110/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2```
 
 
-**Next steps:** [ZeroNet Developer Documentation](/site_development/getting_started/)
+**Сделующий шаг:** [Документация разработчика ZeroNet](/site_development/getting_started/)
