@@ -90,13 +90,13 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#create-new-zeronet-site">Create new ZeroNet site</a></li>
+                <li class="toctree-l3"><a href="#zeronet">Создание сайта ZeroNet</a></li>
                 
-                    <li><a class="toctree-l4" href="#1-create-site-structure">1. Create site structure</a></li>
+                    <li><a class="toctree-l4" href="#1">1. Подготовка структуры сайта</a></li>
                 
-                    <li><a class="toctree-l4" href="#2-buildmodify-site">2. Build/Modify site</a></li>
+                    <li><a class="toctree-l4" href="#2">2. Создание и изменение сайта</a></li>
                 
-                    <li><a class="toctree-l4" href="#3-publish-site-changes">3. Publish site changes</a></li>
+                    <li><a class="toctree-l4" href="#3">3. Публикация изменений</a></li>
                 
             
             </ul>
@@ -213,11 +213,11 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="create-new-zeronet-site">Create new ZeroNet site</h1>
-<h3 id="1-create-site-structure">1. Create site structure</h3>
+                <h1 id="zeronet">Создание сайта ZeroNet</h1>
+<h3 id="1">1. Подготовка структуры сайта</h3>
 <ul>
-<li>Shut down ZeroNet if it is running</li>
-<li>Browse to the folder where ZeroNet is installed and run:</li>
+<li>Если ZeroNet запущен, остановите его</li>
+<li>Откройте папку установки ZeroNet и выполните команду:</li>
 </ul>
 <pre><code class="bash">$ zeronet.py siteCreate
 ...
@@ -230,16 +230,16 @@ $ zeronet.py
 </code></pre>
 
 <ul>
-<li>This will create the initial files for your site inside <code>data/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2</code>.</li>
+<li>Эта команда подготовит исходные файлы для сайта в папке <code>data/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2</code>. Сохраните сгенерированный секретный (private key) и запомните идентификатор (адрес) сайта, они вам понадобятся в будущем неоднократно.</li>
 </ul>
 <blockquote>
-<p><strong>Note:</strong>
-Windows users using the bundle version must browse into the ZeroBundle/ZeroNet folder and run <code>"../Python/python.exe" zeronet.py siteCreate</code></p>
+<p><strong>Замечание:</strong>
+Пользователям Windows, использующие пакетную (bundle) версию, необходимой перейти в папку ZeroBundle/ZeroNet и выполнить <code>"../Python/python.exe" zeronet.py siteCreate</code></p>
 </blockquote>
-<h3 id="2-buildmodify-site">2. Build/Modify site</h3>
+<h3 id="2">2. Создание и изменение сайта</h3>
 <ul>
-<li>Update the site files located in <code>data/[your site address key]</code> (eg: 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2).</li>
-<li>When your site is ready run:</li>
+<li>Обновите файлы сайта, расположенные в папке <code>data/[ключ вашего сайта]</code> (на пример: 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2).</li>
+<li>Когда сайт будет готов для запуска, выполните:</li>
 </ul>
 <pre><code class="bash">$ zeronet.py siteSign 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2
 - Signing site: 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2...
@@ -247,11 +247,11 @@ Private key (input hidden):
 </code></pre>
 
 <ul>
-<li>Enter the private key you got when you created the site. This will sign all files so peers can verify that the site owner is who made the changes.</li>
+<li>Введите секретный ключ, полученный при создании сайта. This will sign all files so peers can verify that the site owner is who made the changes.</li>
 </ul>
-<h3 id="3-publish-site-changes">3. Publish site changes</h3>
+<h3 id="3">3. Публикация изменений</h3>
 <ul>
-<li>In order to inform peers about the changes you made you need to run:</li>
+<li>Для оповещения пользователей о новой редации сайта вам необходимо выполнить команду:</li>
 </ul>
 <pre><code class="bash">$ zeronet.py sitePublish 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2
 ...
@@ -261,10 +261,10 @@ Site:13DNDk..bhC2 Successfuly published to 3 peers
 </code></pre>
 
 <ul>
-<li>That's it! You've successfully signed and published your modifications.</li>
-<li>Your site will be accessible from: <code>http://localhost:43110/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2</code></li>
+<li>Вот и все! Сейчас вы успешно подписали и опубликовали обвновления сайта.</li>
+<li>Ваш теперь доступен по адресу: <code>http://localhost:43110/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2</code></li>
 </ul>
-<p><strong>Next steps:</strong> <a href="../../site_development/getting_started/">ZeroNet Developer Documentation</a></p>
+<p><strong>Сделующий шаг:</strong> <a href="../../site_development/getting_started/">Документация разработчика ZeroNet</a></p>
               
             </div>
           </div>

@@ -105,9 +105,9 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#overview">Overview</a></li>
+                <li class="toctree-l3"><a href="#_1">Введение</a></li>
                 
-                    <li><a class="toctree-l4" href="#zeronet-debug-mode">ZeroNet Debug mode</a></li>
+                    <li><a class="toctree-l4" href="#zeronet">Режим отладки ZeroNet</a></li>
                 
             
             </ul>
@@ -209,38 +209,38 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="overview">Overview</h1>
-<p>ZeroNet allows you to publish static and dynamic sites.</p>
-<p>Although ZeroNet can't run scripting languages like PHP or Ruby, you can create dynamic sites using ZeroNet's API (called ZeroFrame), JavaScript (or CoffeeScript) and the built-in SQL database.</p>
-<h2 id="zeronet-debug-mode">ZeroNet Debug mode</h2>
-<p>ZeroNet comes with a <code>--debug</code> flag that will make site development easier.</p>
-<p>To run ZeroNet in debug mode use: <code>python zeronet.py --debug</code></p>
-<h3 id="debug-mode-features">Debug mode features:</h3>
+                <h1 id="_1">Введение</h1>
+<p>ZeroNet позволяет создавать как статичные, так и сайты с динамическим контентом.</p>
+<p>Тем не менее технология ZeroNet исключает возможность использования языков сценариев таких как PHP или Ruby. Вы можете реализовывать динамичность за счет API, встроенного ZeroNet и называемого ZeroFrame, скпритов JavaScript (или CoffeeScript) и встроенной базы данных SQL.</p>
+<h2 id="zeronet">Режим отладки ZeroNet</h2>
+<p>ZeroNet, запущенный с параметром <code>--debug</code>, позволит вам упросить процесс разработки.</p>
+<p>Чтобы запустить ZeroNet в режиме отладки используйте следующую команду: <code>python zeronet.py --debug</code></p>
+<h3 id="_2">Особенности режима отладки:</h3>
 <ul>
-<li>Automatic CoffeeScript -&gt; JavaScript conversion (All examples used in this documentation and sample sites are written in <a href="http://coffeescript.org/">CoffeeScript</a>)</li>
-<li>Debug messages will appear in the console</li>
-<li>Auto reload of some source files (UiRequest, UiWebsocket, FileRequest) on modification to prevent restarting (Requires <a href="http://pyfilesystem.org/">PyFilesystem</a> on GNU/Linux)</li>
-<li><code>http://127.0.0.1:43110/Debug</code> Traceback and interactive Python console at the last error position (using the wonderful Werkzeug debugger - Requires <a href="http://werkzeug.pocoo.org/">Werkzeug</a>)</li>
-<li><code>http://127.0.0.1:43110/Console</code> Spawns an interactive Python console (Requires <a href="http://werkzeug.pocoo.org/">Werkzeug</a>)</li>
+<li>Автоматическая генерация кода JavaScript из CoffeeScript (все примеры, использованные в данной документации и примеры сайтов, написаны на <a href="http://coffeescript.org/">CoffeeScript</a>)</li>
+<li>В консоль будет выводиться отладочная информация</li>
+<li>Автоматическая перегрузка некоторых файлов (UiRequest, UiWebsocket, FileRequest) при изменении вместо перезагрузки страниц (требует <a href="http://pyfilesystem.org/">PyFilesystem</a> on GNU/Linux)</li>
+<li>Отладчик <code>http://127.0.0.1:43110/Debug</code> Интерактивная консоль Python с позиционированием на записи последней ошибки (используется прекрасный отладчик Werkzeug - требует <a href="http://werkzeug.pocoo.org/">Werkzeug</a>)</li>
+<li>Консоль <code>http://127.0.0.1:43110/Console</code> вызывает интерактивную консоль Python (требует <a href="http://werkzeug.pocoo.org/">Werkzeug</a>)</li>
 </ul>
-<h3 id="extra-features-works-only-for-sites-that-you-own">Extra features (works only for sites that you own)</h3>
+<h3 id="_3">Дополнительные компоненты (доступно только для сайта, владельцем которых вы являетесь)</h3>
 <ul>
-<li>Merged CSS files: All CSS files inside the site folder will be merged into one file called <code>all.css</code>. You can choose to include only this file to your site. If you want to keep the other CSS files to make the development easier, you can add them to the ignore key of your <code>content.json</code>. This way, they won't be published with your site. (eg: add to your <code>content.json</code> <code>"ignore": "(js|css)/(?!all.(js|css))"</code> this will ignore all CSS and JS files except <code>all.js</code> and <code>all.css</code>)</li>
-<li>Merged JS files: All JS files inside the site folder will be merged into one file called <code>all.js</code>. If a CoffeeScript compiler is present (bundled for Windows) it will convert <code>.coffee</code> to <code>.js</code>.</li>
-<li>Order in which files are merged into all.css/all.js: Files inside subdirectories of the css/js folder comes first; Files in the css/js folder will be merged according to file name ordering (01_a.css, 02_a.css, etc)</li>
+<li>Объединенные файлы CSS: все файлы стилей CSS, находящиеся внутри папки сайт, будут объединины в один с имененем <code>all.css</code>. Теперь вы можете указывать только этот файл. Если для разработки необходимо сохранить другие файлы CSS, укажите их в разделе в разедел ignore конфигурационного файла <code>content.json</code>. В этом случае они не будут опубликованы на сайте. (на пример, если добавить в <code>content.json</code> <code>"ignore": "(js|css)/(?!all.(js|css))"</code>, тогда при публикации будут пропущены  все файлы CSS и JS, исключая генерируемые <code>all.js</code> и <code>all.css</code>)</li>
+<li>Объединенные файлы JavaSctipt (JS): Все файлы JS, находящиеся в папке сайта, будут объединины в один с имененем <code>all.js</code>. Если используется "компилятор" CoffeeScript (в комплекте с Windows), то файлы <code>.coffee</code> будут конвертированы в <code>.js</code>.</li>
+<li>Порядок объединения файлов в all.css/all.js: файлы, содержащиеся в дочерних папках css/js будут добавлены первыми; файлы папки css/js обрабатываются согласно их наименованию (01_a.css, 02_a.css, etc)</li>
 </ul>
-<h3 id="zeronet-site-development-tutorial">ZeroNet site development tutorial</h3>
-<h4 id="part-1"><a href="http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:43:ZeroNet+site+development+tutorial+1">Part #1</a>:</h4>
+<h3 id="zeronet_1">Руководство по разработке сайтов ZeroNet</h3>
+<h4 id="1"><a href="http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:43:ZeroNet+site+development+tutorial+1">Часть #1</a>:</h4>
 <ul>
-<li>Site creation,</li>
-<li>First ZeroFrame API calls)</li>
+<li>Создание сайта,</li>
+<li>Вызов API ZeroFrame </li>
 </ul>
-<h4 id="part-2"><a href="http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:46:ZeroNet+site+development+tutorial+2">Part #2</a>:</h4>
+<h4 id="2"><a href="http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:46:ZeroNet+site+development+tutorial+2">Часть #2</a>:</h4>
 <ul>
-<li>User login</li>
-<li>Publish new content to network</li>
-<li>SQL Database insert and query</li>
-<li>Real-time update your site</li>
+<li>Использование авторизации</li>
+<li>Публикация нового контента в сети</li>
+<li>Подключение базы данных SQL и использование запросов</li>
+<li>Обновление сайта в режиме реального времени</li>
 </ul>
               
             </div>

@@ -112,10 +112,10 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#zeroframe-api-reference">ZeroFrame API Reference</a></li>
+                <li class="toctree-l3"><a href="#zeroframe-api">Справка по ZeroFrame API</a></li>
                 
             
-                <li class="toctree-l3"><a href="#wrapper">Wrapper</a></li>
+                <li class="toctree-l3"><a href="#_1">Обертка</a></li>
                 
                     <li><a class="toctree-l4" href="#wrapperconfirm-message-button_caption">wrapperConfirm message, [button_caption]</a></li>
                 
@@ -311,38 +311,38 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="zeroframe-api-reference">ZeroFrame API Reference</h1>
-<h1 id="wrapper">Wrapper</h1>
-<p><em>These commands handled by wrapper frame and does not sent to UiServer using websocket</em></p>
+                <h1 id="zeroframe-api">Справка по ZeroFrame API</h1>
+<h1 id="_1">Обертка</h1>
+<p><em>Эти команды обрабатываются оберточной конструкцией и не отправляются на сервер с помощью WebSocket</em></p>
 <h4 id="wrapperconfirm-message-button_caption">wrapperConfirm <em>message, [button_caption]</em></h4>
-<p>Display a notification with confirm button</p>
+<p>Отображает уведомление с кнопой подтверждения</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>message</strong></td>
-<td>The message you want to display</td>
+<td>Текст выводимого сообщения</td>
 </tr>
 <tr>
-<td><strong>button_caption</strong> (optional)</td>
-<td>Caption of the confirmation button (default: OK)</td>
+<td><strong>button_caption</strong> (опционально)</td>
+<td>Надпись кнопки подтверждения (по умолчанию: OK)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: True if clicked on button</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript"># Delete site
+<p><strong>Результат</strong>: True в случае нажатия на кнопку</p>
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript"># Удалить сайт
 siteDelete: (address) -&gt;
     site = @sites[address]
     title = site.content.title
     if title.length &gt; 40
         title = title.substring(0, 15)+&quot;...&quot;+title.substring(title.length-10)
-    @cmd &quot;wrapperConfirm&quot;, [&quot;Are you sure you sure? &lt;b&gt;#{title}&lt;/b&gt;&quot;, &quot;Delete&quot;], (confirmed) =&gt;
+    @cmd &quot;wrapperConfirm&quot;, [&quot;Вы уверены? &lt;b&gt;#{title}&lt;/b&gt;&quot;, &quot;Delete&quot;], (confirmed) =&gt;
         @log &quot;Deleting #{site.address}...&quot;, confirmed
         if confirmed
             $(&quot;.site-#{site.address}&quot;).addClass(&quot;deleted&quot;)
@@ -351,171 +351,171 @@ siteDelete: (address) -&gt;
 
 <hr />
 <h4 id="wrappergetlocalstorage">wrapperGetLocalStorage</h4>
-<p><strong>Return</strong>: Browser's local store for the site</p>
-<p><strong>Example:</strong></p>
+<p><strong>Результат</strong>: Локальное хранилище браузера для сайта</p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">@cmd &quot;wrapperGetLocalStorage&quot;, [], (res) =&gt;
     res ?= {}
-    @log &quot;Local storage value:&quot;, res
+    @log &quot;Значение в локальном хранилище:&quot;, res
 </code></pre>
 
 <hr />
 <h4 id="wrapperpermissionadd-permission">wrapperPermissionAdd <em>permission</em></h4>
-<p>Request new permission for site</p>
+<p>Запрашивает права доступа для сайта</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>permission</strong></td>
-<td>Name of permission (eg. Merger:ZeroMe)</td>
+<td>Наименование набора прав доступа (на пример. Merger:ZeroMe)</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h4 id="wrappersetlocalstorage-data">wrapperSetLocalStorage <em>data</em></h4>
-<p>Set browser's local store data stored for the site</p>
+<p>Устанавливает локальное хранилище для сайта</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>data</strong></td>
-<td>Any data structure you want to store for the site</td>
+<td>Любая структура данных, которую вам необходимо держать в хранилище</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
-<p><strong>Example:</strong></p>
+<p><strong>Результат</strong>: не возвращается</p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">Page.local_storage[&quot;topic.#{@topic_id}_#{@topic_user_id}.visited&quot;] = Time.timestamp()
 Page.cmd &quot;wrapperSetLocalStorage&quot;, Page.local_storage
 </code></pre>
 
 <hr />
 <h4 id="wrappernotification-type-message-timeout">wrapperNotification <em>type, message, [timeout]</em></h4>
-<p>Display a notification</p>
+<p>Выводит уведомление</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>type</strong></td>
-<td>Possible values: info, error, done</td>
+<td>Доступные типы сообщений: info, error, done</td>
 </tr>
 <tr>
 <td><strong>message</strong></td>
-<td>The message you want to display</td>
+<td>Текст выводимого сообщения</td>
 </tr>
 <tr>
-<td><strong>timeout</strong> (optional)</td>
-<td>Hide display after this interval (milliseconds)</td>
+<td><strong>timeout</strong> (опционально)</td>
+<td>Скрыть сообщение по окончанию интервала (в милисекундах)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript">@cmd &quot;wrapperNotification&quot;, [&quot;done&quot;, &quot;Your registration has been sent!&quot;, 10000]
+<p><strong>Результат</strong>: не возвращается</p>
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript">@cmd &quot;wrapperNotification&quot;, [&quot;done&quot;, &quot;Ваша регистрационные данные были отправлены!&quot;, 10000]
 </code></pre>
 
 <hr />
 <h4 id="wrapperprompt-message-type">wrapperPrompt <em>message, [type]</em></h4>
-<p>Prompt text input from user</p>
+<p>Запрашивает у пользователя ввод текста</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>message</strong></td>
-<td>The message you want to display</td>
+<td>Текст выводимого сообщения</td>
 </tr>
 <tr>
 <td><strong>type</strong> (optional)</td>
-<td>Type of the input (default: text)</td>
+<td>Тип вводимого значения (по умолчанию: text)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: Text entered to input</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript"># Prompt the private key
-@cmd &quot;wrapperPrompt&quot;, [&quot;Enter your private key:&quot;, &quot;password&quot;], (privatekey) =&gt;
+<p><strong>Результат</strong>: Введенное значение</p>
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript"># Запрос секретного ключа
+@cmd &quot;wrapperPrompt&quot;, [&quot;Пожалуйста, введите ваш секретный ключ:&quot;, &quot;password&quot;], (privatekey) =&gt;
     $(&quot;.publishbar .button&quot;).addClass(&quot;loading&quot;)
-    # Send sign content.json and publish request to server
+    # Отправка подписанного content.json и отправка серверу запроса на публикацию
     @cmd &quot;sitePublish&quot;, [privatekey], (res) =&gt;
         $(&quot;.publishbar .button&quot;).removeClass(&quot;loading&quot;)
-        @log &quot;Publish result:&quot;, res
+        @log &quot;Реузльтат публикации:&quot;, res
 </code></pre>
 
 <h4 id="wrappersetviewport-viewport">wrapperSetViewport <em>viewport</em></h4>
-<p>Set sites's viewport meta tag content (required for mobile sites)</p>
+<p>Установка мета-тега <code>viewport</code> (необходимо для мобильных устройств)</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>viewport</strong></td>
-<td>The viewport meta tag content</td>
+<td>Значение тега <code>viewport</code></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Return</strong>: None</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript"># Prompt the private key
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript"># Установка мета-тега viewport
 @cmd &quot;wrapperSetViewport&quot;, &quot;width=device-width, initial-scale=1.0&quot;
 </code></pre>
 
 <hr />
 <h1 id="uiserver">UiServer</h1>
-<p>The UiServer is for ZeroNet what the LAMP setup is for normal websites.</p>
-<p>The UiServer will do all the 'backend' work (eg: querying the DB, accessing files, etc). This are the API calls you will need to make your site dynamic.</p>
+<p>UiServer для ZeroNet как серверный набор LAMP для обычных сайтов.</p>
+<p>UiServer делает всю работу 'бэкенда' (на пример: запросы к базе данных, доступ к файловым ресурсам и так далее). Он содержить вызов API, необходимые для создания динамического контента сайтов.</p>
 <h4 id="certadd-domain-auth_type-auth_user_name-cert">certAdd <em>domain, auth_type, auth_user_name, cert</em></h4>
-<p>Add a new certificate to current user.</p>
+<p>Создает новые сертификат для текущего пользователя.</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>domain</strong></td>
-<td>Certificate issuer domain</td>
+<td>Домен, для которого выпускается сертификат</td>
 </tr>
 <tr>
 <td><strong>auth_type</strong></td>
-<td>Auth type used on registration</td>
+<td>Способ авторизации при регистрации</td>
 </tr>
 <tr>
 <td><strong>auth_user_name</strong></td>
-<td>User name used on registration</td>
+<td>Логин пользователя при регистрации</td>
 </tr>
 <tr>
 <td><strong>cert</strong></td>
-<td>The cert itself: <code>auth_address#auth_type/auth_user_name</code> string signed by the cert site owner</td>
+<td>Сам сертификат: <code>auth_address#auth_type/auth_user_name</code> строка, подписанная сертификатом владельца сайта</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: "ok", "Not changed" or {"error": error_message}</p>
-<p><strong>Example:</strong></p>
+<p><strong>Результат</strong>: "ok", "Not changed" или ошибку {"error": error_message}</p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">@cmd &quot;certAdd&quot;, [&quot;zeroid.bit&quot;, auth_type, user_name, cert_sign], (res) =&gt;
     $(&quot;.ui&quot;).removeClass(&quot;flipped&quot;)
     if res.error
@@ -524,97 +524,97 @@ Page.cmd &quot;wrapperSetLocalStorage&quot;, Page.local_storage
 
 <hr />
 <h4 id="certselect-accepted_domains">certSelect <em>accepted_domains</em></h4>
-<p>Display certificate selector.</p>
+<p>Отображение выбора сертификата.</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>accepted_domains</strong></td>
-<td>List of domains that accepted by site as authorization provider</td>
+<td>Список доменов, принимающих в качестве поставщиков авторизации</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
-<p><strong>Example:</strong></p>
+<p><strong>Результат</strong>: не возвращается</p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">@cmd &quot;certSelect&quot;, {&quot;accepted_domains&quot;: [&quot;zeroid.bit&quot;]}
 </code></pre>
 
 <hr />
 <h4 id="channeljoin-channel">channelJoin <em>channel</em></h4>
-<p>Request notifications about sites's events.</p>
+<p>Запрос уведомлений о событиях сайта.</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>channel</strong></td>
-<td>Channel to join</td>
+<td>Используемый канал</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
-<p><strong>Channels</strong>:</p>
+<p><strong>Результат</strong>: None</p>
+<p><strong>Каналы</strong>:</p>
 <ul>
-<li><strong>siteChanged</strong> (joined by default)<br>Events: peers_added, file_started, file_done, file_failed</li>
+<li><strong>siteChanged</strong> (используется по умолчанию)<br>События: peers_added, file_started, file_done, file_failed</li>
 </ul>
-<p><strong>Example</strong>:</p>
-<pre><code class="coffeescript"># Wrapper websocket connection ready
+<p><strong>Пример</strong>:</p>
+<pre><code class="coffeescript"># Подключение через WebSocket готово
 onOpenWebsocket: (e) =&gt;
     @cmd &quot;channelJoinAllsite&quot;, {&quot;channel&quot;: &quot;siteChanged&quot;}
 
-# Route incoming requests and messages
+# Маршрутизация входящих запросов и сообщений
 route: (cmd, data) -&gt;
     if cmd == &quot;setSiteInfo&quot;
-        @log &quot;Site changed&quot;, data
+        @log &quot;Сайт изменен&quot;, data
     else
-        @log &quot;Unknown command&quot;, cmd, data
+        @log &quot;неизвестная команда&quot;, cmd, data
 </code></pre>
 
-<p><strong>Example event data</strong></p>
+<p><strong>Пример данных события</strong></p>
 <pre><code class="json">{
     &quot;tasks&quot;:0,
     &quot;size_limit&quot;:10,
     &quot;address&quot;:&quot;1RivERqttrjFqwp9YH1FviduBosQPtdBN&quot;,
     &quot;next_size_limit&quot;:10,
     &quot;event&quot;:[ &quot;file_done&quot;, &quot;index.html&quot; ],
-    [...] # Same as siteInfo return dict
+    [...] # Идентично возвращаемому значению siteInfo (см. описание далее)
 }
 
 </code></pre>
 
 <hr />
 <h4 id="dbquery-query">dbQuery <em>query</em></h4>
-<p>Run a query on the sql cache</p>
+<p>Запуск запроса к кэшу SQL</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>query</strong></td>
-<td>Sql query command</td>
+<td>Команда SQL</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: <list> Result of the query</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript">@log &quot;Updating user info...&quot;, @my_address
+<p><strong>Результат</strong>: <list> Результат запроса</p>
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript">@log &quot;Обновление информации о пользователе...&quot;, @my_address
 Page.cmd &quot;dbQuery&quot;, [&quot;SELECT user.*, json.json_id AS data_json_id FROM user LEFT JOIN json USING(path) WHERE path='#{@my_address}/data.json'&quot;], (res) =&gt;
-    if res.error or res.length == 0 # Db not ready yet or No user found
+    if res.error or res.length == 0 # База данных еще не готова или пользователь не найден
         $(&quot;.head-user.visitor&quot;).css(&quot;display&quot;, &quot;&quot;)
-        $(&quot;.user_name-my&quot;).text(&quot;Visitor&quot;)
+        $(&quot;.user_name-my&quot;).text(&quot;Посетитель&quot;)
         if cb then cb()
         return
 
@@ -626,31 +626,31 @@ Page.cmd &quot;dbQuery&quot;, [&quot;SELECT user.*, json.json_id AS data_json_id
 
 <hr />
 <h4 id="fileget-inner_path-required">fileGet <em>inner_path, [required]</em></h4>
-<p>Get file content</p>
+<p>Получает содержимое файла</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>inner_path</strong></td>
-<td>The file you want to get</td>
+<td>Имя запрашиваемого файла</td>
 </tr>
 <tr>
-<td><strong>required</strong> (optional)</td>
-<td>Try and wait for the file if it's not exists. (default: True)</td>
+<td><strong>required</strong> (опционально)</td>
+<td>Ожидание создания файла в случае его отсутствия (по умолчанию: True).</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: <string> The content of the file</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript"># Upvote a topic on ZeroTalk
+<p><strong>Результат</strong>: <string> Содержимое запрошенного файла</p>
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript"># Голосование в теме ZeroTalk
 submitTopicVote: (e) =&gt;
-    if not Users.my_name # Not registered
-        Page.cmd &quot;wrapperNotification&quot;, [&quot;info&quot;, &quot;Please, request access before posting.&quot;]
+    if not Users.my_name # Не зарегистрирован
+        Page.cmd &quot;wrapperNotification&quot;, [&quot;info&quot;, &quot;Пожалуйста, получите доступ для публикации.&quot;]
         return false
 
     elem = $(e.currentTarget)
@@ -659,74 +659,74 @@ submitTopicVote: (e) =&gt;
 
     Page.cmd &quot;fileGet&quot;, [inner_path], (data) =&gt;
         data = JSON.parse(data)
-        data.topic_votes ?= {} # Create if not exits
+        data.topic_votes ?= {} # Создать в случае отсутствия
         topic_address = elem.parents(&quot;.topic&quot;).data(&quot;topic_address&quot;)
 
-        if elem.hasClass(&quot;active&quot;) # Add upvote to topic
+        if elem.hasClass(&quot;active&quot;) # Добавить голосование по теме
             data.topic_votes[topic_address] = 1
-        else # Remove upvote from topic
+        else # Удаление голосование по теме
             delete data.topic_votes[topic_address]
 
-        # Write file and publish to other peers
+        # Запись в файл и публикация другим пользователям
         Page.writePublish inner_path, Page.jsonEncode(data), (res) =&gt;
             elem.removeClass(&quot;loading&quot;)
             if res == true
-                @log &quot;File written&quot;
+                @log &quot;Файл записан&quot;
             else # Failed
-                elem.toggleClass(&quot;active&quot;) # Change back
+                elem.toggleClass(&quot;active&quot;) # Возвращаем состояние
 
     return false
 </code></pre>
 
 <hr />
 <h4 id="filedelete-inner_path">fileDelete <em>inner_path</em></h4>
-<p>Get file content</p>
+<p>Удаление файла</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>inner_path</strong></td>
-<td>The file you want to delete</td>
+<td>Имя файла, подлежащего удалению</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: "ok" on success else the error message</p>
+<p><strong>Результат</strong>: "ok" в случае успешного удаления или сообщение об ошибке</p>
 <hr />
 <h4 id="filequery-dir_inner_path-query">fileQuery <em>dir_inner_path, query</em></h4>
-<p>Simple json file query command</p>
+<p>Простая команда запроса файла json</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>dir_inner_path</strong></td>
-<td>Pattern of queried files</td>
+<td>Директория запрашиваемого файла</td>
 </tr>
 <tr>
 <td><strong>query</strong></td>
-<td>Query command</td>
+<td>Команда запроса</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: <list> Matched content</p>
-<p><strong>Query examples:</strong></p>
+<p><strong>Результат</strong>: <list> Удовлетворяющий запросу контент</p>
+<p><strong>Пример запроса:</strong></p>
 <ul>
-<li><code>["data/users/*/data.json", "topics"]</code>: Returns all topics node from all user files</li>
-<li><code>["data/users/*/data.json", "comments.1@2"]</code>: Returns <code>user_data["comments"]["1@2"]</code> value from all user files</li>
-<li><code>["data/users/*/data.json", ""]</code>: Returns all data from users files</li>
+<li><code>["data/users/*/data.json", "topics"]</code>: Возвращает все сообщения по теме от всех пользоваталей</li>
+<li><code>["data/users/*/data.json", "comments.1@2"]</code>: Возвращает значения <code>user_data["comments"]["1@2"]</code> от всех пользателей</li>
+<li><code>["data/users/*/data.json", ""]</code>: Возвращает все данные из файлов пользователей</li>
 </ul>
-<p><strong>Example:</strong></p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">@cmd &quot;fileQuery&quot;, [&quot;data/users/*/data.json&quot;, &quot;topics&quot;], (topics) =&gt;
-    topics.sort (a, b) -&gt; # Sort by date
+    topics.sort (a, b) -&gt; # Сортировка по дате
         return a.added - b.added
     for topic in topics
         @log topic.topic_id, topic.inner_path, topic.title
@@ -734,23 +734,23 @@ submitTopicVote: (e) =&gt;
 
 <hr />
 <h4 id="filerules-inner_path">fileRules <em>inner_path</em></h4>
-<p>Return the rules for the file.</p>
+<p>Получение правил для файлов</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>inner_path</strong></td>
-<td>File inner path</td>
+<td>Путь к файлу</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: <list> Matched content</p>
-<p><strong>Example result:</strong></p>
+<p><strong>Результат</strong>: <list> Удовлетворяющий запросу контент</p>
+<p><strong>Пример результата:</strong></p>
 <pre><code class="json">{
     &quot;current_size&quot;: 2485,
     &quot;cert_signers&quot;: {&quot;zeroid.bit&quot;: [&quot;1iD5ZQJMNXu43w1qLB8sfdHVKppVMduGz&quot;]},
@@ -761,38 +761,38 @@ submitTopicVote: (e) =&gt;
 }
 </code></pre>
 
-<p><strong>Example:</strong></p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">@cmd &quot;fileRules&quot;, &quot;data/users/1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj/content.json&quot;, (rules) =&gt;
     @log rules
 </code></pre>
 
 <hr />
 <h4 id="filewrite-inner_path-content">fileWrite <em>inner_path, content</em></h4>
-<p>Write file content</p>
+<p>Запись содержимого файла</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>inner_path</strong></td>
-<td>Inner path of the file you want to write</td>
+<td>Путь к файлу</td>
 </tr>
 <tr>
 <td><strong>content</strong></td>
-<td>Content you want to write to file (base64 encoded)</td>
+<td>Содержимое записываемого файла (в кодировке <a href="https://ru.wikipedia.org/wiki/Base64">base64</a>)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: "ok" on success else the error message</p>
-<p><strong>Example:</strong></p>
+<p><strong>Результат</strong>: "ok" в случае успешной записи или сообщение об ошибке</p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">writeData: (cb=null) -&gt;
-    # Encode to json, encode utf8
+    # В формате json в кодировке utf8
     json_raw = unescape(encodeURIComponent(JSON.stringify({&quot;hello&quot;: &quot;ZeroNet&quot;}, undefined, '\t')))
-    # Convert to to base64 and send
+    # Кодирование в base64 и отправка
     @cmd &quot;fileWrite&quot;, [&quot;data.json&quot;, btoa(json_raw)], (res) =&gt;
         if res == &quot;ok&quot;
             if cb then cb(true)
@@ -801,7 +801,7 @@ submitTopicVote: (e) =&gt;
             if cb then cb(false)
 </code></pre>
 
-<p><em>Note:</em> to write files that not in content.json yet, you must have <code>"own": true</code> in <code>data/sites.json</code> at the site you want to write</p>
+<p><em>Заметка:</em> для записи файлов, отсутствующих в <code>content.json</code>, вы должны указать параметр <code>"own": true</code> в <code>data/sites.json</code> на сайте, в который вы ходите записать</p>
 <hr />
 <h4 id="serverinfo">serverInfo</h4>
 <p><strong>Return:</strong> <dict> All information about the server</p>
