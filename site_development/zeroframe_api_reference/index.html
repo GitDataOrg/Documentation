@@ -163,7 +163,7 @@
                     <li><a class="toctree-l4" href="#siteupdate-address">siteUpdate address</a></li>
                 
             
-                <li class="toctree-l3"><a href="#plugin-cryptmessage">Plugin: CryptMessage</a></li>
+                <li class="toctree-l3"><a href="#cryptmessage">Плагин: CryptMessage</a></li>
                 
                     <li><a class="toctree-l4" href="#userpublickey-index">userPublickey [index]</a></li>
                 
@@ -178,7 +178,7 @@
                     <li><a class="toctree-l4" href="#aesdecrypt-encrypted_texts-keys">aesDecrypt encrypted_texts, keys</a></li>
                 
             
-                <li class="toctree-l3"><a href="#plugin-newsfeed">Plugin: Newsfeed</a></li>
+                <li class="toctree-l3"><a href="#newsfeed">Плагин: Newsfeed</a></li>
                 
                     <li><a class="toctree-l4" href="#feedfollow-feeds">feedFollow feeds</a></li>
                 
@@ -187,7 +187,7 @@
                     <li><a class="toctree-l4" href="#feedquery">feedQuery</a></li>
                 
             
-                <li class="toctree-l3"><a href="#plugin-mergersite">Plugin: MergerSite</a></li>
+                <li class="toctree-l3"><a href="#mergersite">Плагин: MergerSite</a></li>
                 
                     <li><a class="toctree-l4" href="#mergersiteadd-addresses">mergerSiteAdd addresses</a></li>
                 
@@ -196,7 +196,7 @@
                     <li><a class="toctree-l4" href="#mergersitelist-query_site_info">mergerSiteList [query_site_info]</a></li>
                 
             
-                <li class="toctree-l3"><a href="#admin-commands">Admin commands</a></li>
+                <li class="toctree-l3"><a href="#_2">Администратиыне команды</a></li>
                 
                     <li><a class="toctree-l4" href="#configset-key-value">configSet key, value</a></li>
                 
@@ -330,7 +330,7 @@
 </tr>
 <tr>
 <td><strong>button_caption</strong> (опционально)</td>
-<td>Надпись кнопки подтверждения (по умолчанию: OK)</td>
+<td>Надпись кнопки подтверждения (по умолчанию OK)</td>
 </tr>
 </tbody>
 </table>
@@ -444,12 +444,12 @@ Page.cmd &quot;wrapperSetLocalStorage&quot;, Page.local_storage
 <td>Текст выводимого сообщения</td>
 </tr>
 <tr>
-<td><strong>type</strong> (optional)</td>
-<td>Тип вводимого значения (по умолчанию: text)</td>
+<td><strong>type</strong> (опционально)</td>
+<td>Тип вводимого значения (по умолчанию text)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Результат</strong>: Введенное значение</p>
+<p><strong>Результат</strong>: введенное значение</p>
 <p><strong>Пример:</strong></p>
 <pre><code class="coffeescript"># Запрос секретного ключа
 @cmd &quot;wrapperPrompt&quot;, [&quot;Пожалуйста, введите ваш секретный ключ:&quot;, &quot;password&quot;], (privatekey) =&gt;
@@ -476,7 +476,7 @@ Page.cmd &quot;wrapperSetLocalStorage&quot;, Page.local_storage
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
+<p><strong>Результат</strong>: не возвращается</p>
 <p><strong>Пример:</strong></p>
 <pre><code class="coffeescript"># Установка мета-тега viewport
 @cmd &quot;wrapperSetViewport&quot;, &quot;width=device-width, initial-scale=1.0&quot;
@@ -561,7 +561,7 @@ Page.cmd &quot;wrapperSetLocalStorage&quot;, Page.local_storage
 </tr>
 </tbody>
 </table>
-<p><strong>Результат</strong>: None</p>
+<p><strong>Результат</strong>: не возвращается</p>
 <p><strong>Каналы</strong>:</p>
 <ul>
 <li><strong>siteChanged</strong> (используется по умолчанию)<br>События: peers_added, file_started, file_done, file_failed</li>
@@ -641,7 +641,7 @@ Page.cmd &quot;dbQuery&quot;, [&quot;SELECT user.*, json.json_id AS data_json_id
 </tr>
 <tr>
 <td><strong>required</strong> (опционально)</td>
-<td>Ожидание создания файла в случае его отсутствия (по умолчанию: True).</td>
+<td>Ожидание создания файла в случае его отсутствия (по умолчанию True).</td>
 </tr>
 </tbody>
 </table>
@@ -695,7 +695,7 @@ submitTopicVote: (e) =&gt;
 </tr>
 </tbody>
 </table>
-<p><strong>Результат</strong>: "ok" в случае успешного удаления или сообщение об ошибке</p>
+<p><strong>Результат</strong>: "ok" в случае успешного удаления, либо сообщение об ошибке</p>
 <hr />
 <h4 id="filequery-dir_inner_path-query">fileQuery <em>dir_inner_path, query</em></h4>
 <p>Простая команда запроса файла json</p>
@@ -787,7 +787,7 @@ submitTopicVote: (e) =&gt;
 </tr>
 </tbody>
 </table>
-<p><strong>Результат</strong>: "ok" в случае успешной записи или сообщение об ошибке</p>
+<p><strong>Результат</strong>: "ok" в случае успешной записи, либо сообщение об ошибке</p>
 <p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">writeData: (cb=null) -&gt;
     # В формате json в кодировке utf8
@@ -804,55 +804,55 @@ submitTopicVote: (e) =&gt;
 <p><em>Заметка:</em> для записи файлов, отсутствующих в <code>content.json</code>, вы должны указать параметр <code>"own": true</code> в <code>data/sites.json</code> на сайте, в который вы ходите записать</p>
 <hr />
 <h4 id="serverinfo">serverInfo</h4>
-<p><strong>Return:</strong> <dict> All information about the server</p>
-<p><strong>Example:</strong></p>
+<p><strong>Результат:</strong> <dict> Информация о сервере</p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">@cmd &quot;serverInfo&quot;, {}, (server_info) =&gt;
-    @log &quot;Server info:&quot;, server_info
+    @log &quot;Информация о сервере:&quot;, server_info
 </code></pre>
 
-<p><strong>Example return value:</strong></p>
+<p><strong>Пример возвращаемого значения:</strong></p>
 <pre><code class="json">{
-    &quot;debug&quot;: true, # Running in debug mode
-    &quot;fileserver_ip&quot;: &quot;*&quot;, # Fileserver binded to
-    &quot;fileserver_port&quot;: 15441, # FileServer port
-    &quot;ip_external&quot;: true, # Active of passive mode
-    &quot;platform&quot;: &quot;win32&quot;, # Operating system
-    &quot;ui_ip&quot;: &quot;127.0.0.1&quot;, # UiServer binded to
-    &quot;ui_port&quot;: 43110, # UiServer port (Web)
-    &quot;version&quot;: &quot;0.2.5&quot; # Version
+    &quot;debug&quot;: true, # Режим отладки
+    &quot;fileserver_ip&quot;: &quot;*&quot;, # Привязка файлового сервера FileServer к IP адресу
+    &quot;fileserver_port&quot;: 15441, # Порт файлового сервера FileServer
+    &quot;ip_external&quot;: true, # Активный или пассивный режим
+    &quot;platform&quot;: &quot;win32&quot;, # Операционная система
+    &quot;ui_ip&quot;: &quot;127.0.0.1&quot;, # Привязка веб-сервера UiServer к IP адресу
+    &quot;ui_port&quot;: 43110, # Порт UiServer
+    &quot;version&quot;: &quot;0.2.5&quot; # Версия
 }
 </code></pre>
 
 <hr />
 <h4 id="siteinfo">siteInfo</h4>
-<p><strong>Return</strong>: <dict> All information about the site</p>
-<p><strong>Example:</strong></p>
+<p><strong>Результат</strong>: <dict> Информация о сайте</p>
+<p><strong>Пример:</strong></p>
 <pre><code class="coffeescript">@cmd &quot;siteInfo&quot;, {}, (site_info) =&gt;
-    @log &quot;Site info:&quot;, site_info
+    @log &quot;Информация о сайте:&quot;, site_info
 </code></pre>
 
-<p><strong>Example return value:</strong></p>
+<p><strong>Пример возвращаемого значения:</strong></p>
 <pre><code class="json">{
-    &quot;tasks&quot;: 0, # Number of files currently under download
-    &quot;size_limit&quot;: 10, # Current site size limit in MB
-    &quot;address&quot;: &quot;1EU1tbG9oC1A8jz2ouVwGZyQ5asrNsE4Vr&quot;, # Site address
-    &quot;next_size_limit&quot;: 10, # Size limit required by sum of site's files
-    &quot;auth_address&quot;: &quot;2D6xXUmCVAXGrbVUGRRJdS4j1hif1EMfae&quot;, # Current user's bitcoin address
-    &quot;auth_key_sha512&quot;: &quot;269a0f4c1e0c697b9d56ccffd9a9748098e51acc5d2807adc15a587779be13cf&quot;, # Deprecated, dont use
-    &quot;peers&quot;: 14, # Peers of site
-    &quot;auth_key&quot;: &quot;pOBdl00EJ29Ad8OmVIc763k4&quot;, # Deprecated, dont use
+    &quot;tasks&quot;: 0, # Количество файлов, скаиваемых в настоящий момент
+    &quot;size_limit&quot;: 10, # Текущее ограничние размера сайта в Мб
+    &quot;address&quot;: &quot;1EU1tbG9oC1A8jz2ouVwGZyQ5asrNsE4Vr&quot;, # Адрес сайта
+    &quot;next_size_limit&quot;: 10, # Максимальны размер требуемого количества файлов сайта
+    &quot;auth_address&quot;: &quot;2D6xXUmCVAXGrbVUGRRJdS4j1hif1EMfae&quot;, # Bitcoin адрес текущего пользователя
+    &quot;auth_key_sha512&quot;: &quot;269a0f4c1e0c697b9d56ccffd9a9748098e51acc5d2807adc15a587779be13cf&quot;, # Устревшее, не используется
+    &quot;peers&quot;: 14, # Количество пользователей сайта
+    &quot;auth_key&quot;: &quot;pOBdl00EJ29Ad8OmVIc763k4&quot;, # Устревшее, не используется
     &quot;settings&quot;:  {
-        &quot;peers&quot;: 13, # Saved peers num for sorting
-        &quot;serving&quot;: true, # Site enabled
-        &quot;modified&quot;: 1425344149.365, # Last modification time of all site's files
-        &quot;own&quot;: true, # Own site
-        &quot;permissions&quot;: [&quot;ADMIN&quot;], # Site's permission
-        &quot;size&quot;: 342165 # Site total size in bytes
+        &quot;peers&quot;: 13, # Количество загрузивших сайт пользоваталей для сортировки
+        &quot;serving&quot;: true, # Доступность сайта
+        &quot;modified&quot;: 1425344149.365, # Время последнего изменения файлов сайта
+        &quot;own&quot;: true, # Собственный сайт
+        &quot;permissions&quot;: [&quot;ADMIN&quot;], # Привелегие на сайте
+        &quot;size&quot;: 342165 # Общий размер сайта в байтах
     },
-    &quot;bad_files&quot;: 0, # Files that needs to be download
-    &quot;workers&quot;: 0, # Current concurent downloads
-    &quot;content&quot;: { # Root content.json
-        &quot;files&quot;: 12, # Number of file, detailed file info removed to reduce data transfer and parse time
+    &quot;bad_files&quot;: 0, # Количество файлов для загрузки
+    &quot;workers&quot;: 0, # Количество текущих одновременных загрузок
+    &quot;content&quot;: { # Корневой content.json
+        &quot;files&quot;: 12, # Количество файлов, подробности файла исключены для минимизации времени загрузки и анализа
         &quot;description&quot;: &quot;This site&quot;,
         &quot;title&quot;: &quot;ZeroHello&quot;,
         &quot;signs_required&quot;: 1,
@@ -863,286 +863,286 @@ submitTopicVote: (e) =&gt;
         &quot;zeronet_version&quot;: &quot;0.2.5&quot;,
         &quot;includes&quot;: 0
     },
-    &quot;cert_user_id&quot;: &quot;zeronetuser@zeroid.bit&quot;, # Currently selected certificate for the site
-    &quot;started_task_num&quot;: 1, # Last number of files downloaded
-    &quot;content_updated&quot;: 1426008289.71 # Content.json update time
+    &quot;cert_user_id&quot;: &quot;zeronetuser@zeroid.bit&quot;, # Текущий сертификат, используваемый для сайта
+    &quot;started_task_num&quot;: 1, # Колчиество файлов, загруженных в прошлый раз
+    &quot;content_updated&quot;: 1426008289.71 # Время обновления файла content.json
 }
 </code></pre>
 
 <hr />
 <h4 id="sitepublish-privatekey-inner_path-sign">sitePublish <em>[privatekey], [inner_path], [sign]</em></h4>
-<p>Publish a content.json of the site</p>
+<p>Публикация файла content.json</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>privatekey</strong> (optional)</td>
-<td>Private key used for signing (default: current user's privatekey)</td>
+<td><strong>privatekey</strong> (опционально)</td>
+<td>Секретный ключ, используемый для подсиси (по умолчанию секретный ключ текущего пользователя)</td>
 </tr>
 <tr>
-<td><strong>inner_path</strong> (optional)</td>
-<td>Inner path of the content json you want to publish (default: content.json)</td>
+<td><strong>inner_path</strong> (опционально)</td>
+<td>Путь файла content.json, который необходимо опубликовать (по умолчанию content.json)</td>
 </tr>
 <tr>
-<td><strong>sign</strong> (optional)</td>
-<td>If True then sign the content.json before publish (default: True)</td>
+<td><strong>sign</strong> (опционально)</td>
+<td>Необходимость подписать файл content.json перед публикацией (по умолчанию True)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: "ok" on success else the error message</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript"># Prompt the private key
-@cmd &quot;wrapperPrompt&quot;, [&quot;Enter your private key:&quot;, &quot;password&quot;], (privatekey) =&gt;
+<p><strong>Результат</strong>: "ok" в случае успешной публикации, либо сообщение об ошибке</p>
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript"># Проверка секретного ключа
+@cmd &quot;wrapperPrompt&quot;, [&quot;Введите секретный ключ:&quot;, &quot;password&quot;], (privatekey) =&gt;
     $(&quot;.publishbar .button&quot;).addClass(&quot;loading&quot;)
-    # Send sign content.json and publish request to server
+    # Отправка подписи content.json и запрос публикации на сервер
     @cmd &quot;sitePublish&quot;, [privatekey], (res) =&gt;
         $(&quot;.publishbar .button&quot;).removeClass(&quot;loading&quot;)
-        @log &quot;Publish result:&quot;, res
+        @log &quot;Результат публикации:&quot;, res
 </code></pre>
 
 <hr />
 <h4 id="sitesign-privatekey-inner_path">siteSign <em>[privatekey], [inner_path]</em></h4>
-<p>Sign a content.json of the site</p>
+<p>Подписание файла content.json</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>privatekey</strong> (optional)</td>
-<td>Private key used for signing (default: current user's privatekey)</td>
+<td><strong>privatekey</strong> (опционально)</td>
+<td>Секретный ключи, используемый для подписи (по умолчанию секретный ключ текущего пользователя)</td>
 </tr>
 <tr>
-<td><strong>inner_path</strong> (optional)</td>
-<td>Inner path of the content json you want to sign (default: content.json)</td>
+<td><strong>inner_path</strong> (опционально)</td>
+<td>Путь файла content.json, который необходимо подписать (по умолчанию content.json)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: "ok" on success else the error message</p>
+<p><strong>Результат</strong>: "ok" в случае успешного подписания, либо сообщение об ошибке</p>
 <blockquote>
-<p><strong>Note:</strong>
-Use "stored" as privatekey if its definied in users.json (eg. cloned sites)</p>
+<p><strong>Примечание:</strong>
+Ипользуйте "stored" в качестве секретного ключа, если он определен в файле users.json (на пример для скопированных сайтов)</p>
 </blockquote>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript">if @site_info[&quot;privatekey&quot;] # Private key stored in users.json
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript">if @site_info[&quot;privatekey&quot;] # Секретный ключ, хранящийся в файле users.json
     @cmd &quot;siteSign&quot;, [&quot;stored&quot;, &quot;content.json&quot;], (res) =&gt;
-        @log &quot;Sign result&quot;, res
+        @log &quot;Результат подписания&quot;, res
 </code></pre>
 
 <hr />
 <h4 id="siteupdate-address">siteUpdate <em>address</em></h4>
-<p>Force check and download changed content from other peers (only necessary if user is in passive mode and using old version of Zeronet)</p>
+<p>Принудительная проверка и загрузка обновлений у остальных пользоваталей (необходимо, если пользователь находится в пассивном режиме и использует старую версию Zeronet)</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>address</strong></td>
-<td>Address of site want to update (only current site allowed without site ADMIN permission)</td>
+<td>Адрес обновляемого (доступны только находящиеся в доступе сайты без привелегий администратора)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return:</strong> None</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript"># Manual site update for passive connections
+<p><strong>Результат</strong>: не возвращается</p>
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript"># Ручное обновление пассивных соединений
 updateSite: =&gt;
     $(&quot;#passive_error a&quot;).addClass(&quot;loading&quot;).removeClassLater(&quot;loading&quot;, 1000)
-    @log &quot;Updating site...&quot;
+    @log &quot;Обновление сайта...&quot;
     @cmd &quot;siteUpdate&quot;, {&quot;address&quot;: @site_info.address}
 </code></pre>
 
 <hr />
-<h1 id="plugin-cryptmessage">Plugin: CryptMessage</h1>
+<h1 id="cryptmessage">Плагин: CryptMessage</h1>
 <h4 id="userpublickey-index">userPublickey <em>[index]</em></h4>
-<p>Get user's site specific publickey</p>
+<p>Получение публичного ключа пользователя</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>index</strong> (optional)</td>
-<td>Sub-publickey within site (default: 0)</td>
+<td><strong>index</strong> (опционально)</td>
+<td>Публичный ключ без сайта (по умолчанию 0)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: base64 encoded publickey</p>
+<p><strong>Результат</strong>: Публичный ключ в формате Base64</p>
 <hr />
 <h4 id="eciesencrypt-text-publickey-return_aes_key">eciesEncrypt <em>text, [publickey], [return_aes_key]</em></h4>
-<p>Encrypt a text using a publickey</p>
+<p>Шифрование текста с помощью публичного ключа</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>text</strong></td>
-<td>Text to encrypt</td>
+<td>Шифруемый текст</td>
 </tr>
 <tr>
-<td><strong>publickey</strong> (optional)</td>
-<td>User's publickey index (int) or base64 encoded publickey (default: 0)</td>
+<td><strong>publickey</strong> (опционально)</td>
+<td>Номер публичного ключа (челое число) или его значение в формате Base64 (по умолчанию 0)</td>
 </tr>
 <tr>
-<td><strong>return_aes_key</strong> (optional)</td>
-<td>Get the AES key used in encryption (default: False)</td>
+<td><strong>return_aes_key</strong> (опционально)</td>
+<td>Получить ключ AES, испольуемый при шифровании (по умолчанию False)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: Encrypted text in base64 format or [Encrypted text in base64 format, AES key in base64 format]</p>
+<p><strong>Результат</strong>: Зашифрованный текст в формате Base64 или массив [зашифрованный текст в формате Base64, ключ AES в формате Base64]</p>
 <hr />
 <h4 id="eciesdecrypt-params-privatekey">eciesDecrypt <em>params, [privatekey]</em></h4>
-<p>Try to decrypt list of texts</p>
+<p>Попытка деширации набора текста</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>params</strong></td>
-<td>A text or list of encrypted texts</td>
+<td>Текст или набор дешифруемых текстов</td>
 </tr>
 <tr>
-<td><strong>privatekey</strong> (optional)</td>
-<td>User's privatekey index (int) or base64 encoded privatekey (default: 0)</td>
+<td><strong>privatekey</strong> (опционально)</td>
+<td>Номер секретного ключа пользователя (целое число) или его значение в формате base64 (по умолчанию 0)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: Decrypted text or list of decrypted texts (null for failed decodings)</p>
+<p><strong>Результат</strong>: Разшифрованный текст или набор текстов (null при ошибке дешифрации)</p>
 <hr />
 <h4 id="aesencrypt-text-key-iv">aesEncrypt <em>text, [key], [iv]</em></h4>
-<p>Encrypt a text using the key and the iv</p>
+<p>Шифрование текста с использованием ключа и вектора инициализации IV</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>text</strong></td>
-<td>A text encrypt using AES</td>
+<td>Текст, шифруемый с помощью AES</td>
 </tr>
 <tr>
-<td><strong>key</strong> (optional)</td>
-<td>Base64 encoded password (default: generate new)</td>
+<td><strong>key</strong> (опционально)</td>
+<td>Ключ AES в формет Base64 (по умолчанию генерируется новый)</td>
 </tr>
 <tr>
-<td><strong>iv</strong> (optional)</td>
-<td>Base64 encoded iv (default: generate new)</td>
+<td><strong>iv</strong> (опционально)</td>
+<td>Вектор инициализации IV в формет Base64 (по умолчанию генерируется новый)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: [base64 encoded key, base64 encoded iv, base64 encoded encrypted text]</p>
+<p><strong>Результат</strong>: [ключ AES в формате Base64, вектор инициализации в формате Base64, зашифрованный текст в формате Base64]</p>
 <hr />
 <h4 id="aesdecrypt-iv-encrypted_text-key">aesDecrypt <em>iv, encrypted_text, key</em></h4>
 <h4 id="aesdecrypt-encrypted_texts-keys">aesDecrypt <em>encrypted_texts, keys</em></h4>
-<p>Decrypt text using the IV and AES key</p>
+<p>Дешифрование текста с вектора инициализации IV и AES пароля </p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>iv</strong></td>
-<td>IV in Base64 format</td>
+<td>IV в формате Base64</td>
 </tr>
 <tr>
 <td><strong>encrypted_text</strong></td>
-<td>Encrypted text in Base64 format</td>
+<td>Шифрованный текст в формате Base64</td>
 </tr>
 <tr>
 <td><strong>encrypted_texts</strong></td>
-<td>List of [base64 encoded iv, base64 encoded encrypted text] pairs</td>
+<td>Список пар [вектора инициализации IV в формате, зашифрованный текст в формате Base64]</td>
 </tr>
 <tr>
 <td><strong>key</strong></td>
-<td>Base64 encoded password for the text</td>
+<td>Ключ AES в формате Base64</td>
 </tr>
 <tr>
 <td><strong>keys</strong></td>
-<td>Keys for decoding (tries every one for every pairs)</td>
+<td>Ключи для декодирования (пробуется каждый набор пар)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: Decoded text or list of decoded texts</p>
+<p><strong>Результат</strong>: Декодированный текст или список текстов</p>
 <hr />
-<h1 id="plugin-newsfeed">Plugin: Newsfeed</h1>
+<h1 id="newsfeed">Плагин: Newsfeed</h1>
 <h4 id="feedfollow-feeds">feedFollow <em>feeds</em></h4>
-<p>Set followed sql queries.</p>
-<p>The SQL query should result in rows with cols:</p>
+<p>Установка отслеживания SQL запросов</p>
+<p>SQL-запрос должен возвращать строки с колонками:</p>
 <table>
 <thead>
 <tr>
 <th>Field</th>
-<th>Description</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>type</strong></td>
-<td>Type: post, article, comment, mention</td>
+<td>Тип: post, article, comment, mention</td>
 </tr>
 <tr>
 <td><strong>date_added</strong></td>
-<td>Event time</td>
+<td>Время события</td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
-<td>Event's first line to be displayed</td>
+<td>Первая строка события для отображения</td>
 </tr>
 <tr>
 <td><strong>body</strong></td>
-<td>Event's second and third line</td>
+<td>Вторая и третья строки события</td>
 </tr>
 <tr>
 <td><strong>url</strong></td>
-<td>Link to event's page</td>
+<td>Ссылка на страницу события</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>feeds</strong></td>
-<td>Format: {"query name": [SQL query, [param1, param2, ...], ...}, parameters will be escaped, joined by <code>,</code> inserted in place of <code>:params</code> in the Sql query.</td>
+<td>Формат: {"query name": [SQL-запрос, [param1, param2, ...], ...}, параметры будут экранированы, объединены запятыми <code>,</code> вставлены вместо параметров <code>:params</code> SQL-запроса.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: ok</p>
-<p><strong>Example:</strong></p>
-<pre><code class="coffeescript"># Follow ZeroBlog posts
+<p><strong>Результат</strong>: ok</p>
+<p><strong>Пример:</strong></p>
+<pre><code class="coffeescript"># Следить за публикациями ZeroBlog
 query = &quot;
     SELECT
      post_id AS event_uri,
@@ -1154,201 +1154,201 @@ query = &quot;
     FROM post
 &quot;
 params = [&quot;&quot;]
-Page.cmd feedFollow [{&quot;Posts&quot;: [query, params]}]
+Page.cmd feedFollow [{&quot;Публикации&quot;: [query, params]}]
 </code></pre>
 
 <hr />
 <h4 id="feedlistfollow">feedListFollow</h4>
-<p>Return of current followed feeds</p>
-<p><strong>Return</strong>: The currently followed feeds in the same format as in the feedFollow commands</p>
+<p>Возврат отслеживаемых загрузчиков</p>
+<p><strong>Результат</strong>: Отслеживаемые загрузчики в формате, аналогичном командам feedFollow</p>
 <hr />
 <h4 id="feedquery">feedQuery</h4>
-<p>Execute all followed sql query</p>
-<p><strong>Return</strong>: The result of the followed Sql queries</p>
+<p>Запустить все отслеживаемые SQL-запросы</p>
+<p><strong>Результат</strong>: Результат выполнения отслеживаемые SQL-запросы</p>
 <hr />
-<h1 id="plugin-mergersite">Plugin: MergerSite</h1>
+<h1 id="mergersite">Плагин: MergerSite</h1>
 <h4 id="mergersiteadd-addresses">mergerSiteAdd <em>addresses</em></h4>
-<p>Start downloading new merger site(s)</p>
+<p>Запуск загрузки новых объединяемых сайтов (или одного сайта)</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>addresses</strong></td>
-<td>Site address or list of site addresses</td>
+<td>Адрес сайта или список адресов</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h4 id="mergersitedelete-address">mergerSiteDelete <em>address</em></h4>
-<p>Stop seeding and delete a merged site</p>
+<p>Остановка отслеживания и удаление объединенного сайта</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>address</strong></td>
-<td>Site address</td>
+<td>Адрес сайта</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h4 id="mergersitelist-query_site_info">mergerSiteList <em>[query_site_info]</em></h4>
-<p>Return merged sites.</p>
+<p>Возвращает список объединенных сайтов</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>query_site_info</strong></td>
-<td>If True, then gives back detailed site info for merged sites</td>
+<td>Если True, тогда возвращает подробную информацию об объединенных сайтов</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h1 id="admin-commands">Admin commands</h1>
-<p><em>(requires ADMIN permission in data/sites.json)</em></p>
+<h1 id="_2">Администратиыне команды</h1>
+<p><em>(требует административного доступа к data/sites.json)</em></p>
 <hr />
 <h4 id="configset-key-value">configSet <em>key, value</em></h4>
-<p>Create or update an entry in ZeroNet config file. (zeronet.conf by default)</p>
+<p>Создание или обновление записи конфигурационного файла ZeroNet (по умолчанию zeronet.conf).</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>key</strong></td>
-<td>Configuration entry name</td>
+<td>Имя конфигурационной записи</td>
 </tr>
 <tr>
 <td><strong>value</strong></td>
-<td>Configuration entry new value</td>
+<td>Новое значение конфигурационной записи</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: ok</p>
+<p><strong>Результат</strong>: ok</p>
 <hr />
 <h4 id="certset-domain">certSet <em>domain</em></h4>
-<p>Set the used certificate for current site.</p>
+<p>Установка использоваемого сертификата на текущий сайт</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>domain</strong></td>
-<td>Domain of the certificate issuer</td>
+<td>Домен издателя сертификата</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
+<p><strong>Результат</strong>: не возвращается</p>
 <hr />
 <h4 id="channeljoinallsite-channel">channelJoinAllsite <em>channel</em></h4>
-<p>Request notifications about every site's events.</p>
+<p>Запрос уведомлений о событиях со каждого сайта</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>channel</strong></td>
-<td>Channel to join (see channelJoin)</td>
+<td>Подсоединяемый канал (подробнее в разделе channelJoin)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
+<p><strong>Результат</strong>: не возвращается</p>
 <hr />
 <h4 id="serverportcheck">serverPortcheck</h4>
-<p>Start checking if port is opened</p>
-<p><strong>Return</strong>: True (port opened) or False (port closed)</p>
+<p>Запуск проверки открытия порта</p>
+<p><strong>Результат</strong>: True в случае, если порт открыт, или False - закрыт</p>
 <hr />
 <h4 id="servershutdown">serverShutdown</h4>
-<p>Stop running ZeroNet client.</p>
-<p><strong>Return</strong>: None</p>
+<p>Остановка запуска клиента ZeroNet.</p>
+<p>Запуск проверки открытия порта</p>
 <hr />
 <h4 id="serverupdate">serverUpdate</h4>
-<p>Re-download ZeroNet from github.</p>
-<p><strong>Return</strong>: None</p>
+<p>Повторная закачка ZeroNet из репозитория github.</p>
+<p><strong>Результат</strong>: не возвращается</p>
 <hr />
 <h4 id="siteclone-address">siteClone <em>address</em></h4>
-<p>Copy site files into a new one.</p>
-<p>Every file and directory will be skipped if it has a <code>-default</code> subfixed version and the subfixed version will be copied instead of it.</p>
-<p>Eg. If you have a <code>data</code> and a <code>data-default</code> directory: The <code>data</code> directory will not be copied and the <code>data-default</code> directory will be renamed to data.</p>
+<p>Копировать файлы сайта на новйы сайт</p>
+<p>Каждый файл и директория будут пропущены, если имеют версионный суффикс <code>-default</code>. Взамен будет скопирована версия, обозначенная в суффиксе.</p>
+<p>На пример, если есть директории <code>data</code> и <code>data-default</code>, <code>data</code> не будет скопирована, а <code>data-default</code> будет переименована <code>data</code>.</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>address</strong></td>
-<td>Address of site want to clone</td>
+<td>Адрес копируемого сайта</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None, automatically redirects to new site on completion</p>
+<p><strong>Результат</strong>: не возвращается, по завершению автоматически перенаправляется на новый сайт</p>
 <hr />
 <h4 id="sitelist">siteList</h4>
-<p><strong>Return</strong>: <list> SiteInfo list of all downloaded sites</p>
+<p><strong>Результат</strong>: <list> Список SiteInfo всех загруженных сайтов</p>
 <hr />
 <h4 id="sitepause-address">sitePause <em>address</em></h4>
-<p>Pause site serving</p>
+<p>Приостановка публикации сайта</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>address</strong></td>
-<td>Address of site want to pause</td>
+<td>Адрес сайта, публикацию которого необходимо остановить</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
+<p><strong>Результат</strong>: не возвращается</p>
 <hr />
 <h4 id="siteresume-address">siteResume <em>address</em></h4>
-<p>Resume site serving</p>
+<p>Возобновление публикации сайта</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>address</strong></td>
-<td>Address of site want to resume</td>
+<td>Адрес сайта, публикацию которого необходимо возобновить</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return</strong>: None</p>
+<p><strong>Результат</strong>: не возвращается</p>
               
             </div>
           </div>

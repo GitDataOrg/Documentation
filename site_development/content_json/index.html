@@ -119,10 +119,10 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#structure-of-contentjson">Structure of content.json</a></li>
+                <li class="toctree-l3"><a href="#contentjson">Структура файла content.json</a></li>
                 
             
-                <li class="toctree-l3"><a href="#generated-automatically">Generated automatically</a></li>
+                <li class="toctree-l3"><a href="#_1">Автоматическая генерация</a></li>
                 
                     <li><a class="toctree-l4" href="#address">address</a></li>
                 
@@ -145,7 +145,7 @@
                     <li><a class="toctree-l4" href="#zeronet_version">zeronet_version</a></li>
                 
             
-                <li class="toctree-l3"><a href="#settings">Settings</a></li>
+                <li class="toctree-l3"><a href="#_2">Настройки</a></li>
                 
                     <li><a class="toctree-l4" href="#background-color">background-color</a></li>
                 
@@ -257,27 +257,27 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="structure-of-contentjson">Structure of content.json</h1>
-<p>Every ZeroNet site will have a <code>content.json</code> file. (<a href="https://github.com/HelloZeroNet/ZeroTalk/blob/master/content.json">Example content.json file</a>)</p>
-<p>This file will carry, amont other things, a list of all files on your site and a signature created with your private key. This is done to avoid file tampering (ie: only you, or people you trust, can update the site content).</p>
-<p>Here is a list of supported keys:</p>
-<h1 id="generated-automatically">Generated automatically</h1>
+                <h1 id="contentjson">Структура файла content.json</h1>
+<p>Каждый сайт ZeroNet содержит файл <code>content.json</code>. (<a href="https://github.com/HelloZeroNet/ZeroTalk/blob/master/content.json">Пример файла content.json</a>)</p>
+<p>Этот файл кроме всего прочего содержит список всех файлов вашего сайта и подпись, созданную с помощью вашего секретного ключа. Это необходимо во избежание подделки файла (то есть только вы, или люди, которым вы доверяете, можете обновлять содержимое сайта).</p>
+<p>Далее список поддерживаемых функций:</p>
+<h1 id="_1">Автоматическая генерация</h1>
 <hr />
 <h3 id="address">address</h3>
-<p>Your site address</p>
-<p><strong>Example</strong>: 1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ</p>
+<p>Адрес вашего сайта</p>
+<p><strong>Пример</strong>: 1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ</p>
 <hr />
 <h3 id="address_index">address_index</h3>
-<p>The site's address BIP32 sub-key index of your BIP32 seed. Auto-added when you clone a site. It allows to recover the site privatekey from your BIP32 seed.</p>
-<p><strong>Example</strong>: 30926910</p>
+<p>Ключ BIP32 адреса вашего BIP32-источника. Автоматически добавляется когда вы создаете копию сайта. Это позволяет восстановить секретный ключ сайта от вашего BIP32-источника.</p>
+<p><strong>Пример</strong>: 30926910</p>
 <hr />
 <h3 id="cloned_from">cloned_from</h3>
-<p>The site address where the site is cloned from.</p>
-<p><strong>Example</strong>: 1BLogC9LN4oPDcruNz3qo1ysa133E9AGg8</p>
+<p>Адрес исходного сайта, который вы скопировали.</p>
+<p><strong>Пример</strong>: 1BLogC9LN4oPDcruNz3qo1ysa133E9AGg8</p>
 <hr />
 <h3 id="files">files</h3>
-<p>Size and sha512 hash of automatically downloaded files contained in your site. Automatically added by the command <code>zeronet.py siteSign siteaddress privatekey</code>.</p>
-<p><strong>Example</strong>:</p>
+<p>Размер и значение кэш sha512 автоматически загруженных файлов, содержащих ваш сайт. Автоматически создается при использовании команды <code>zeronet.py siteSign siteaddress privatekey</code>.</p>
+<p><strong>Пример</strong>:</p>
 <pre><code class="json">    &quot;css/all.css&quot;: {
       &quot;sha512&quot;: &quot;869b09328f07bac538c313c4702baa5276544346418378199fa5cef644c139e8&quot;,
       &quot;size&quot;: 148208
@@ -285,8 +285,8 @@
 
 <hr />
 <h3 id="files_optional">files_optional</h3>
-<p>Size and sha512 hash of optional files contained in your site. Automatically added by the command <code>zeronet.py siteSign siteaddress privatekey</code>.</p>
-<p><strong>Example</strong>:</p>
+<p>Размер и значение кэш sha512 дополнительных файлов вашего сайта. Автоматически создается при использовании команды <code>zeronet.py siteSign siteaddress privatekey</code>.</p>
+<p><strong>Пример</strong>:</p>
 <pre><code class="json">    &quot;data/myvideo.mp4&quot;: {
       &quot;sha512&quot;: &quot;538c09328aa52765443464135cef644c144346418378199fa5cef61837819538&quot;,
       &quot;size&quot;: 832103
@@ -294,12 +294,12 @@
 
 <hr />
 <h3 id="modified">modified</h3>
-<p>Time when the content.json was generated.</p>
-<p><strong>Example</strong>: 1425857522.076</p>
+<p>Время создания content.json.</p>
+<p><strong>Пример</strong>: 1425857522.076</p>
 <hr />
 <h3 id="sign-deprecated">sign (deprecated)</h3>
-<p>ECDSA sign of the content.json file content. (keys sorted, without whitespace and the <code>sign</code> and <code>signers_sign</code> nodes). For backward compatibility, will be removed soon.</p>
-<p><strong>Example</strong>:</p>
+<p>Подпись ECDSA файла content.json, содержащий контент (ключи отсортированы без пробелов и записей <code>sign</code> и <code>signers_sign</code>). Для обеспечения обратной совместимости в ближайшее время будут удалены.</p>
+<p><strong>Пример</strong>:</p>
 <pre><code class="json">  &quot;sign&quot;: [
     43117356513690007125104018825100786623580298637039067305407092800990252156956,
     94139380599940414070721501960181245022427741524702752954181461080408625270000
@@ -308,13 +308,13 @@
 
 <hr />
 <h3 id="signers_sign">signers_sign</h3>
-<p>Possible signers address for the root content.json signed using the site address private key. (Multisig possibility)</p>
-<p><strong>Format of the signed string</strong>: [signers_required]:[signer address],[signer address]</p>
-<p><strong>Example</strong>: <small>HKNDz9IUHcBc/l2Jm2Bl70XQDL9HYHhJ2hUdg8AMyunACLgxyXBr7EW1/ME4hGkaFZSFmIxlInmxH+BrMVXbnLw=</small></p>
+<p>Адреса доступных подписантов корневого файла content.json, подписанного с использованием секретного ключа адреса сайта (возможна множественная подпись)</p>
+<p><strong>Формат подписанной строки</strong>: [signers_required]:[signer address],[signer address]</p>
+<p><strong>Пример</strong>: <small>HKNDz9IUHcBc/l2Jm2Bl70XQDL9HYHhJ2hUdg8AMyunACLgxyXBr7EW1/ME4hGkaFZSFmIxlInmxH+BrMVXbnLw=</small></p>
 <hr />
 <h3 id="signs">signs</h3>
-<p>ECDSA signs for the the content.json file content. (keys sorted, without whitespace and the <code>sign</code> and <code>signers_sign</code> nodes).</p>
-<p><strong>Example</strong>:</p>
+<p>Подписи ECDSA файла контента content.json (ключи отсортированы без пробелов и записей <code>sign</code> и <code>signers_sign</code>).</p>
+<p><strong>Пример</strong>:</p>
 <pre><code class="json">  &quot;signs&quot;: {
     &quot;1TaLk3zM7ZRskJvrh3ZNCDVGXvkJusPKQ&quot;: &quot;G6/QXFKvACPQ7LhoZG4fgqmeOSK99vGM2arVWkm9pV/WPCfc2ulv6iuQnuzw4v5z82qWswcRq907VPdBsdb9VRo=&quot;
   },
@@ -322,90 +322,90 @@
 
 <hr />
 <h3 id="zeronet_version">zeronet_version</h3>
-<p>ZeroNet version used to generate content.json file.</p>
-<p><strong>Example</strong>: 0.2.5</p>
+<p>Версия ZeroNet, использованная для генерации файла content.json.</p>
+<p><strong>Пример</strong>: 0.2.5</p>
 <hr />
-<h1 id="settings">Settings</h1>
+<h1 id="_2">Настройки</h1>
 <h3 id="background-color">background-color</h3>
-<p>Background color of the wrapper</p>
-<p><strong>Example</strong>: #F5F5F5</p>
+<p>Цвет фона обертки</p>
+<p><strong>Пример</strong>: #F5F5F5</p>
 <hr />
 <h3 id="cloneable">cloneable</h3>
-<p>Allow to clone the site if <strong>true</strong>.</p>
-<p>To make your site properly cloneable you have to add data files for clean start (eg. without any blog posts).
-To do this you have to add <strong>-default</strong> postfix to your data files and directories.
-On the cloning process every file and directory is skipped if it has <strong>-default</strong> postfixed alternative and then the <strong>-default</strong> postfix will be removed from the affected files and directories.</p>
+<p>Резрешение создании копии сайта, если указано <strong>true</strong>.</p>
+<p>Для того, чтобы ваш сайт правильно клонирован, вы должны добавить файлы данных для чистого запуска (например, без сообщений в блоге).
+Для этого добавьте суффикс <strong>-default</strong> к файлам данных и каталогам.
+В процессе клонирования каждый файл и каталог, имеющий альтернативный файл с суффиксом <strong>-default</strong>, будет пропущен, а у скопированных суффикс <strong>-default</strong> удален.</p>
 <hr />
 <h3 id="description">description</h3>
-<p>Description of your site, displayed under site title on ZeroHello.</p>
-<p><strong>Example</strong>: Decentralized forum demo</p>
+<p>Описание вашего сайта, отображаемое нв заголовком в ZeroHello.</p>
+<p><strong>Пример</strong>: Децентрализованный демо-форму</p>
 <hr />
 <h3 id="domain">domain</h3>
-<p>Namecoin domain name of your site. ZeroHello will link to this if the user has Zeroname plugin enabled.</p>
-<p><strong>Example</strong>: Blog.ZeroNetwork.bit</p>
+<p>Доменной имя вашего сайта в системе Namecoin. ZeroHello будет привязан к этому имени в случае установки у пользователя плагина Zeroname.</p>
+<p><strong>Пример</strong>: Blog.ZeroNetwork.bit</p>
 <hr />
 <h3 id="ignore">ignore</h3>
-<p>Ignore files from signing matching this preg pattern</p>
-<p><strong>Example</strong>: <code>((js|css)/(?!all.(js|css))|data/users/.*)</code> (ignore all js and css files except all.js and all.css and don't add anything from data/users/ directory)</p>
+<p>Игнорирование фалов при подписании, соответсвующих regexp шаблону.</p>
+<p><strong>Пример</strong>: <code>((js|css)/(?!all.(js|css))|data/users/.*)</code> (исключит все файлы js и css за исключение all.js и all.css, а также исключит содержимое папки data/users/ directory)</p>
 <hr />
 <h3 id="includes">includes</h3>
-<p>Include an another content.json</p>
-<p><strong>Example</strong>:</p>
+<p>Подключает другой content.json</p>
+<p><strong>Пример</strong>:</p>
 <pre><code class="json">{
   &quot;data/users/content.json&quot;: {
-    &quot;signers&quot;: [ # Possible signers address for the file
+    &quot;signers&quot;: [ # Адреса возможных подписантов для файлов
       &quot;1LSxsKfC9S9TVXGGNSM3vPHjyW82jgCX5f&quot;
     ],
-    &quot;signers_required&quot;: 1 # Valid signs required to accept the file (Multisig possibility),
-    &quot;files_allowed&quot;: &quot;data.json&quot;, # Preg pattern for the allowed files in the include file
-    &quot;includes_allowed&quot;: false, # Nested includes allowed or not
-    &quot;max_size&quot;: 10000, # Max sum filesize allowed in the include (in bytes)
+    &quot;signers_required&quot;: 1 # Количество подтвержденных подписей, тербуемых для утверждения файла (возможна множественная подпись),
+    &quot;files_allowed&quot;: &quot;data.json&quot;, # Шаблон regexp утвержадаемых файлов в подключаемом файла
+    &quot;includes_allowed&quot;: false, # Разрешение вложенных подключений файлов
+    &quot;max_size&quot;: 10000, # Максимальный допустимый объем вложений (в байтах)
   }
 }
 </code></pre>
 
 <hr />
 <h3 id="merged_type">merged_type</h3>
-<p>Data source for specified merger site type</p>
-<p><strong>Example</strong>: <code>ZeroMe</code></p>
+<p>Источник данных для указанного типа объединения сайта</p>
+<p><strong>Пример</strong>: <code>ZeroMe</code></p>
 <hr />
 <h3 id="optional">optional</h3>
-<p>Preg pattern of optional files</p>
-<p><strong>Example</strong>: <code>(data/mp4/.*|updater/.*)</code> (everything in data/mp4 and updater directory is optional)</p>
+<p>Шаблон regexp для выборки прилоежнных файлов</p>
+<p><strong>Пример</strong>: <code>(data/mp4/.*|updater/.*)</code> (файлы из директории data/mp4 и updater)</p>
 <hr />
 <h3 id="signs_required">signs_required</h3>
-<p>Valid signs required to accept the file (Multisig possibility)</p>
-<p><strong>Example</strong>: 1</p>
+<p>Количество подтвержденных подписей, тербуемых для утверждения файла (возможна множественная подпись)</p>
+<p><strong>Пример</strong>: 1</p>
 <hr />
 <h3 id="title">title</h3>
-<p>Site's title, visible in browser title and on ZeroHello.</p>
-<p><strong>Example</strong>: ZeroTalk</p>
+<p>Заголовок сайта, отображаемый в заголовке браузера и на странице ZeroHello.</p>
+<p><strong>Пример</strong>: ZeroTalk</p>
 <hr />
 <h3 id="user_contents">user_contents</h3>
-<p>Rules of allowed user content of current directory.</p>
+<p>Правила разрешенного пользовательского контента текущего каталога.</p>
 <table>
 <thead>
 <tr>
-<th>Node</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>cert_signers</strong></td>
-<td>Accepted domains and it's valid signer's addresses</td>
+<td>Разрешенные домены и адреса возможных подписантов</td>
 </tr>
 <tr>
 <td><strong>permission_rules</strong></td>
-<td>Allowed file names and total directory size based on cert domain or authorization method</td>
+<td>Разрешенные имена файлов и общий размер папок, использующих в качестве базового сертифицированный домен или метод авторизации</td>
 </tr>
 <tr>
 <td><strong>permissions</strong></td>
-<td>Per-user permissions. (false = banned user)</td>
+<td>Права доступа пользователей (false = пользователь заблокирован).</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Example</strong>:</p>
+<p><strong>Пример</strong>:</p>
 <pre><code class="json">  &quot;user_contents&quot;: {
     &quot;cert_signers&quot;: {
       &quot;zeroid.bit&quot;: [ &quot;1iD5ZQJMNXu43w1qLB8sfdHVKppVMduGz&quot; ]
@@ -427,8 +427,8 @@ On the cloning process every file and directory is skipped if it has <strong>-de
 
 <hr />
 <h3 id="viewport">viewport</h3>
-<p>Content for the viewport meta tag. (Used for mobile-friendly pages)</p>
-<p><strong>Example</strong>: width=device-width, initial-scale=1.0</p>
+<p>Содержание мета-тега viewport (используется для мобильных устройств).</p>
+<p><strong>Пример</strong>: width=device-width, initial-scale=1.0</p>
               
             </div>
           </div>
